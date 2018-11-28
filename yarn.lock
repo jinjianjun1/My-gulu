@@ -1105,6 +1105,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000899:
   resolved "http://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30000911.tgz#5dfb8139ee479722da27000ca92dec47913b9605"
   integrity sha1-XfuBOe5HlyLaJwAMqS3sR5E7lgU=
 
+chai-spies@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/chai-spies/download/chai-spies-1.0.0.tgz#d16b39336fb316d03abf8c375feb23c0c8bb163d"
+  integrity sha1-0Ws5M2+zFtA6v4w3X+sjwMi7Fj0=
+
 chai@^4.2.0:
   version "4.2.0"
   resolved "http://registry.npm.taobao.org/chai/download/chai-4.2.0.tgz#760aa72cf20e3795e84b12877ce0e83737aa29e5"
