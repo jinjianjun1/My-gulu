@@ -1,10 +1,12 @@
 <template>
 
-    <button class="g-button">
+    <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
         <svg v-if="icon" class="icon">
             <use :xlink:href=`#i-${icon}`></use>
         </svg>
-        <slot></slot>
+        <div class="content">
+            <slot></slot>
+        </div>
     </button>
 </template>
 
@@ -23,15 +25,26 @@
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background: var(--button-bg);
-            &:hover{
-                border-color: var(--border-color-hover)
+        display: inline-flex;justify-content: center;align-items: center;
+        vertical-align: middle;
+            &:hover{border-color: var(--border-color-hover)}
+            &:active{background-color: var(--button-active-bg)}
+            &:focus{outline: none}
+            > .content{
+                order: 2;}
+            > .icon{
+                order: 1;
+                margin-right: .3em;
+                margin-left: 0;
             }
-            &:active{
-            background-color: var(--button-active-bg)
-            }
-            &:focus{
-            outline: none
-            }
+        &.icon-right{
+            >.content{order:1}
+            >.icon{order:2;
+                margin-left: .3em;
+                margin-right: 0;}
+        }
     }
+
+
 
 </style>
