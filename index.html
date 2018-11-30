@@ -10,18 +10,29 @@
 <body>
 <div id="app">
 
-    <g-button  >按钮</g-button>
-    <g-button icon="settings" @click="isloading1=!isloading1" :loading="isloading1" icon-position="right">按钮</g-button>
-    <g-button icon="down" @click="isloading2=!isloading2" :loading="isloading2" >down</g-button>
-    <g-button icon="left" >left</g-button>
-    <g-button icon="right">right</g-button>
-    <g-button icon="delate">delate</g-button>
-    <!--<g-icon name="delate"></g-icon>-->
-    <g-button-group>
-        <g-button   icon="left"></g-button>
-        <g-button>more</g-button>
-        <g-button icon="right" icon-position="right"></g-button>
-    </g-button-group>
+    <!--<g-button  >按钮</g-button>-->
+    <!--<g-button icon="settings" @click="isloading1=!isloading1" :loading="isloading1" icon-position="right">按钮</g-button>-->
+    <!--<g-button icon="down" @click="isloading2=!isloading2" :loading="isloading2" >down</g-button>-->
+    <!--<g-button icon="left" >left</g-button>-->
+    <!--<g-button icon="right">right</g-button>-->
+    <!--<g-button icon="delate">delate</g-button>-->
+    <!--&lt;!&ndash;<g-icon name="delate"></g-icon>&ndash;&gt;-->
+    <!--<g-button-group>-->
+    <!--<g-button   icon="left"></g-button>-->
+    <!--<g-button>more</g-button>-->
+    <!--<g-button icon="right" icon-position="right"></g-button>-->
+    <!--</g-button-group>-->
+
+    <div class="box">
+        <g-input value="213"></g-input>
+        <g-input disabled value="666"></g-input>
+        <g-input readonly value="555"></g-input>
+    </div>
+    <div class="box">
+        <g-input value="777" error="格式不对"></g-input>
+    </div>
+
+
 
 </div>
 <style>
@@ -40,12 +51,12 @@
     body{
         font-size: var(--font-size);
     }
+    .box{
+        margin: 20px ;
+    }
 </style>
-<style>
 
-</style>
 <script src="src/app.js"></script>
-<!--<script src="//at.alicdn.com/t/font_939190_q6doho7hwtq.js"></script>-->
 
 
 </body>
