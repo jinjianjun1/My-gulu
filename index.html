@@ -23,18 +23,28 @@
     <!--<g-button icon="right" icon-position="right"></g-button>-->
     <!--</g-button-group>-->
 
-    <div class="box">
-        <g-input value="213" @change="look"></g-input>
-        <!--<g-input disabled value="666"></g-input>-->
-        <!--<g-input readonly value="555"></g-input>-->
-    </div>
-    <div class="box">
-        <g-input value="777" error="格式不对"></g-input>
-    </div>
-
-
-
+    <!--<hr>-->
+    <!--<div class="box">-->
+        <!--<g-input value="213" @change="look"></g-input>-->
+        <!--&lt;!&ndash;<g-input disabled value="666"></g-input>&ndash;&gt;-->
+        <!--&lt;!&ndash;<g-input readonly value="555"></g-input>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div class="box">-->
+        <!--<g-input value="777" error="格式不对"></g-input>-->
+    <!--</div>-->
+    <hr>
+    <g-row>
+        <g-col :span="6">1</g-col>
+        <g-col>2</g-col>
+        <g-col>3</g-col>
+        <g-col>4</g-col>
+    </g-row>
+    <g-row>
+        <g-col span="2"></g-col>
+        <g-col span="22"></g-col>
+    </g-row>
 </div>
+
 <style>
     *{margin: 0;padding:0;box-sizing: border-box}
     :root{
