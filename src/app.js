@@ -13,6 +13,11 @@ new Vue({
     data:{
       isloading1:false,
         isloading2:false
+    },
+    methods:{
+        look(e){
+            console.log(e.target.value);
+        }
     }
 });
 
