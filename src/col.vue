@@ -31,7 +31,7 @@
 </script>
 
 <style scoped lang="scss">
-    .col{height: 100px;width: 50%;
+    .col{height: 100px;
     $class-prefix:col-;
     @for $n from 1 through 24{
       &.#{$class-prefix}#{$n}{

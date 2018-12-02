@@ -8,7 +8,24 @@
     <title>Document</title>
 </head>
 <body>
+<style>
+    .box{background: #ddd;border: 1px solid red;}
+
+</style>
 <div id="app">
+
+    <g-row class="topbar" >
+        <g-col class="box" span="9" >
+            <g-row align="left">
+                <g-col>1</g-col><g-col>2</g-col><g-col>3</g-col><g-col>4</g-col>
+            </g-row>
+        </g-col>
+        <g-col class="box" span="15">
+            <g-row align="right">
+                <g-col>1</g-col><g-col>2</g-col><g-col>3</g-col><g-col>4</g-col><g-col>5</g-col><g-col>6</g-col><g-col>7</g-col>
+            </g-row>
+        </g-col>
+    </g-row>
 
     <!--<g-button  >按钮</g-button>-->
     <!--<g-button icon="settings" @click="isloading1=!isloading1" :loading="isloading1" icon-position="right">按钮</g-button>-->
@@ -38,24 +55,24 @@
         <!--<g-col offset="2">3</g-col>-->
         <!--<g-col offset="3">4</g-col>-->
     <!--</g-row>-->
-    <div style="border: 1px solid black;">
-    <g-row gutter="30">
-        <g-col span="12" offset="0" >1</g-col>
-        <g-col span="12">2</g-col>
-    </g-row>
-        <g-row gutter="50">
-            <g-col span="6">1</g-col>
-            <g-col span="6">2</g-col>
-            <g-col span="6">3</g-col>
-            <g-col span="6">4</g-col>
-        </g-row>
-        <g-row gutter="50">
-            <g-col span="5">1</g-col>
-            <g-col span="5" offset="1">2</g-col>
-            <g-col span="5" offset="1">3</g-col>
-            <g-col span="5" offset="1">4</g-col>
-        </g-row>
-    </div>
+    <!--<div style="border: 1px solid black;">-->
+    <!--<g-row gutter="30">-->
+        <!--<g-col span="12" offset="0" >1</g-col>-->
+        <!--<g-col span="12">2</g-col>-->
+    <!--</g-row>-->
+        <!--<g-row gutter="50">-->
+            <!--<g-col span="6">1</g-col>-->
+            <!--<g-col span="6">2</g-col>-->
+            <!--<g-col span="6">3</g-col>-->
+            <!--<g-col span="6">4</g-col>-->
+        <!--</g-row>-->
+        <!--<g-row gutter="50">-->
+            <!--<g-col span="5">1</g-col>-->
+            <!--<g-col span="5" offset="1">2</g-col>-->
+            <!--<g-col span="5" offset="1">3</g-col>-->
+            <!--<g-col span="5" offset="1">4</g-col>-->
+        <!--</g-row>-->
+    <!--</div>-->
 </div>
 
 <style>
