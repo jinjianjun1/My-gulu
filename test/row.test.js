@@ -26,7 +26,6 @@ describe('Row', () => {
         });
         setTimeout(()=>{
             const row=vm.$el.querySelector('.row');
-            console.log(row);
             expect(getComputedStyle(row).marginRight).to.eq('-10px');
             expect(getComputedStyle(row).marginLeft).to.eq('-10px');
             const cols=vm.$el.querySelectorAll('.col');
@@ -44,7 +43,6 @@ describe('Row', () => {
         const vm = new Constructor({
             propsData: {
                 align: 'right',
-                loading: true
             }
         }).$mount(div);
         const element=vm.$el;
