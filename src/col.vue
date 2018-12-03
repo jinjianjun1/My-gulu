@@ -29,6 +29,19 @@
         data(){
         return{gutter:0}
         },
+        methods:{
+            createClasses:(obj,string='')=>{
+                if(!obj){return []}
+                let array=[];
+                if (obj.span){
+                    array.push([`col-${string}${obj.span}`])
+                }
+                if (obj.offset){
+                    array.push([`offset-${string}${obj.offset}`])
+                }
+                return array
+            }
+        },
         computed:{
             colStyle(){
                 return {
@@ -37,13 +50,13 @@
                 }},
             colClass(){
                 let {span, offset, ipad,narrowPc,pc,widePc} = this;
+
                 return [
-                    span &&`col-${span}`,
-                    offset && `offset-${offset}`,
-                    ...(ipad ? [`col-iad-${ipad.span}`]:[]),
-                    ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`]:[]),
-                    ...(pc ? [`col-pc-${pc.span}`]:[]),
-                    ...(widePc ? [`col-wide-pc-${widePc.span}`]:[])
+                    ...this.createClasses({span,offset}),
+                    ...this.createClasses(ipad,'ipad-'),
+                    ...this.createClasses(narrowPc ,'narrow-pc-'),
+                    ...this.createClasses(pc,'pc-'),
+                    ...this.createClasses(widePc,'wide-pc-')
                 ];
             }
         }
