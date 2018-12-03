@@ -9,11 +9,21 @@
 </head>
 <body>
 <style>
-    .box{background: #ddd;border: 1px solid red;}
-
+    .demo {
+        border: 1px solid red;
+        height: 100px;
+    }
 </style>
 <div id="app">
 
+    <g-layout style="height:100vh">
+        <g-header class="demo">header</g-header>
+        <g-layout class>
+            <g-sidebar class="demo">sider</g-sidebar>
+            <g-content class="demo">content</g-content>
+        </g-layout>
+        <g-footer class="demo">footer</g-footer>
+    </g-layout>
 
 
     <!--<g-button  >按钮</g-button>-->
@@ -28,17 +38,14 @@
     <!--<g-button>more</g-button>-->
     <!--<g-button icon="right" icon-position="right"></g-button>-->
     <!--</g-button-group>-->
-    <g-row>
-        <g-col span="23" offset="1" :ipad="{span:12} " :narrow-pc="{span:8}">
-            <div class="demo"></div>
-        </g-col>
+    <!--<g-row>-->
+    <!--<g-col span="23" offset="1" :ipad="{span:12} " :narrow-pc="{span:8}">-->
+    <!--<div class="demo"></div>-->
+    <!--</g-col>-->
+    <!--</g-row>-->
 
-
-    </g-row>
 </div>
-<style>
-    .demo {background: #dddddd;border: 1px solid black; height: 100px}
-</style>
+
 <style>
     *{margin: 0;padding:0;box-sizing: border-box}
     :root{--button-height:32px;--font-size:14px;--button-bg:#fff;--button-active-bg:#eee;--border-radius:4px;--color:#333;--border-color:#999;--border-color-hover:#666;}
