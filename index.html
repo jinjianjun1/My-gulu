@@ -11,18 +11,19 @@
 <style>
     .demo {
         border: 1px solid red;
-        height: 100px;
+
     }
 </style>
 <div id="app">
 
     <g-layout style="height:100vh">
-        <g-header class="demo">header</g-header>
-        <g-layout class>
-            <g-sidebar class="demo">sider</g-sidebar>
+        <g-sidebar class="demo">sidebar</g-sidebar>
+        <g-layout>
+            <g-header class="demo">header</g-header>
             <g-content class="demo">content</g-content>
+            <g-footer class="demo">footer</g-footer>
         </g-layout>
-        <g-footer class="demo">footer</g-footer>
+
     </g-layout>
 
 
