@@ -32,7 +32,15 @@ new Vue({
         isloading2:false,
     },
     created() {
-
+        this.$toast('你好',{
+                closeButton: {
+                    text:'知道了',
+                    callback(toast){
+                        console.log('user konwn')
+                    }
+                },
+            enableHtml: false
+        })
     },
     methods:{
         look(e){
