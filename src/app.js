@@ -38,8 +38,16 @@ new Vue({
         look(e){
             console.log(e);
        },
-        showToast(){
+        showtoast1(){
+            this.showToast('top')
+        },showtoast2(){
+            this.showToast('middle')
+        },showtoast3(){
+            this.showToast('bottom')
+        },
+        showToast(position){
             this.$toast(`你好${parseInt(Math.random()*100)}`,{
+                position,
                 closeButton: {
                     text:'知道了',
                     callback(toast){
@@ -48,7 +56,7 @@ new Vue({
 
                 },
                 enableHtml: false,
-                position:'bottom'
+
             })
         }
     }
