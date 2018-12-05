@@ -88,42 +88,22 @@
 $font-size:14px;
 $background:rgba(0,0,0,0.75);
 $height:40px;
+@keyframes fade-in {
+    0%{opacity: 0;
+        transform: translateY(100%);}
+    100%{opacity: 1;transform: translateY(0%);}
+}
 .toast{
-    color: #fff; ;position: fixed;
-    font-size: $font-size;
-    line-height: 1.8;
-    min-height: $height;
-    display: flex;
-    align-items: center;
-    background: $background ;
-    border-radius: 4px;
-    box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
-    padding: 0 16px;
-    left: 50%;
-    .message{
-        padding:8px 0;
-    }
-    .close {
-        padding-left: 16px;
-        flex-shrink: 0
-    }
-
-    .line {
-        height: 100%;
-        border-left: 1px solid #666;
-        margin-left: 16px;
-    }
-    &.position-top{
-        top: 0;transform: translateX(-50%);
-    }
-    &.position-bottom{
-        bottom:0;
-        transform: translateX(-50%);
-    }
-    &.position-middle{
-        top: 50%;
-        transform: translate(-50%,-50%);
-    }
+    animation: fade-in .8s;
+    color: #fff; ;position: fixed;font-size: $font-size;line-height: 1.8;min-height: $height;display: flex;
+    align-items: center;background: $background ;border-radius: 4px;box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
+    padding: 0 16px;left: 50%;
+    .message{padding:8px 0;}
+    .close {padding-left: 16px;flex-shrink: 0}
+    .line {height: 100%;border-left: 1px solid #666;margin-left: 16px;}
+    &.position-top{top: 0;transform: translateX(-50%);}
+    &.position-bottom{bottom:0;transform: translateX(-50%);}
+    &.position-middle{top: 50%;transform: translate(-50%,-50%);}
 }
 
 </style>
