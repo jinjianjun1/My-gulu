@@ -32,7 +32,14 @@ new Vue({
         isloading2:false,
     },
     created() {
-        this.$toast('你好',{
+
+    },
+    methods:{
+        look(e){
+            console.log(e);
+       },
+        showToast(){
+            this.$toast(`你好${parseInt(Math.random()*100)}`,{
                 closeButton: {
                     text:'知道了',
                     callback(toast){
@@ -40,16 +47,9 @@ new Vue({
                     },
 
                 },
-            enableHtml: false,
-            position:'middle'
-        })
-    },
-    methods:{
-        look(e){
-            console.log(e);
-       },
-        showToast(){
-            this.$toast('我是message')
+                enableHtml: false,
+                position:'bottom'
+            })
         }
     }
 });
