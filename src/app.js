@@ -10,6 +10,8 @@ import Layout from './layout'
 import Sidebar from './sidebar'
 import Footer from  './footer'
 import Content from './content'
+import Toast from './toast'
+import plugin from './plugin'
 Vue.component('g-header',Header);
 Vue.component('g-layout',Layout);
 Vue.component('g-sidebar',Sidebar);
@@ -21,15 +23,23 @@ Vue.component('g-button-group',ButtonGroup);
 Vue.component('g-input',Input);
 Vue.component('g-col', Col);
 Vue.component('g-row',Row);
+Vue.component('g-toast',Toast);
+Vue.use(plugin)
 new Vue({
    el:'#app',
     data:{
       isloading1:false,
-        isloading2:false
+        isloading2:false,
+    },
+    created() {
+
     },
     methods:{
         look(e){
             console.log(e);
+       },
+        showToast(){
+            this.$toast('我是message')
         }
     }
 });

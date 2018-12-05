@@ -8,39 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-<style>
-    .demo {
-        border: 1px solid red;
-        min-height: 100px;
-    }
-    .sidebar{
-        background: #333;
-        width: 200px;
-    }
-    .sidebar.slide-enter, .sidebar.slide-leave-to{
-        margin-left: -100px;
-    }
-    .header{
-        background: #999;
-        height: 100px;
-    }
-    .footer{
-        background: #ccc;
-        height: 50px;
-    }
-</style>
 <div id="app">
 
-    <g-layout style="height:100vh">
-        <g-sidebar >sidebar</g-sidebar>
-        <g-layout>
-            <g-header >header</g-header>
-            <g-content >content</g-content>
-            <g-footer >footer</g-footer>
-        </g-layout>
-
-    </g-layout>
-
+<button @click="showToast">showToast</button>
 
     <!--<g-button  >按钮</g-button>-->
     <!--<g-button icon="settings" @click="isloading1=!isloading1" :loading="isloading1" icon-position="right">按钮</g-button>-->
