@@ -37,9 +37,11 @@ new Vue({
                     text:'知道了',
                     callback(toast){
                         console.log('user konwn')
-                    }
+                    },
+
                 },
-            enableHtml: false
+            enableHtml: false,
+            position:'middle'
         })
     },
     methods:{
