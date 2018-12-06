@@ -6,7 +6,30 @@
 
 <script>
     export default {
-        name: "GuluTabsPane"
+        name: "GuluTabsPane",
+        inject:['eventBus'],
+        data(){
+            return{
+                active:false
+            }
+        },
+        computed:{
+            classes(){
+                return {active:this.active}
+            }
+        },
+        props:{
+            name:{
+                type: String,
+                required:true
+            }
+        },
+        created() {
+            this.eventBus.$on('update:selected',(name)=>{
+                this.active = this.name === name;
+
+            })
+        }
     }
 </script>
 
