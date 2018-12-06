@@ -17,13 +17,13 @@
         name:'GuluToast',
         props: {
             autoClose: {
-                type: Boolean,
-                default: true
+                type: [Boolean,Number],
+                default: 3,
+                validator(value){
+                    return value===false|| typeof value==='number';
+                }
             },
-            timeDelay: {
-                type: Number,
-                default: 100
-            },
+
             closeButton: {
                 type: Object,
                 default() {
@@ -59,14 +59,13 @@
             updateStyle() {
                 this.$nextTick(() => {
                     this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
-                    console.log(this.$refs.line.style.hight)
                 });
             },
             execAutoClose() {
                 if (this.autoClose) {
                     setTimeout(() => {
                         this.close()
-                    }, this.timeDelay * 1000)
+                    }, this.autoClose * 1000)
                 }
             },
             close() {

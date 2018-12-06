@@ -53,9 +53,9 @@ new Vue({
                     callback(toast){
                         console.log('user konwn')
                     },
-
                 },
                 enableHtml: false,
+                autoClose:3
 
             })
         }

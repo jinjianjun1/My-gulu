@@ -8,7 +8,6 @@ export default {
         Vue.prototype.$toast=function (message,toastOptions) {
             if(currentToast){
                 currentToast.close();
-                console.log(currentToast)
             }
             currentToast = createToast({
                 Vue,
