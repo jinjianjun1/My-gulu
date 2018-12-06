@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs-pane">
+    <div class="tabs-pane" :class="classes">
         <slot></slot>
     </div>
 </template>
