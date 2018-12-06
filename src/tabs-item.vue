@@ -42,6 +42,11 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.tabs-item{
+    flex-shrink: 0;
+    padding: 0 2em;
+    &.active{
+        background: red;}
+}
 </style>
