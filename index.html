@@ -9,9 +9,21 @@
 </head>
 <body>
 <div id="app">
-<button @click="showtoast1">top</button>
-<button @click="showtoast2">middle</button>
-<button @click="showtoast3">bottom</button>
+<g-tabs :selected.sync="selectTab">
+    <g-tabs-head >
+        <template slot="actions">看我</template>
+        <g-tabs-item disabled name="first">
+            <g-icon name="settings"></g-icon>
+            title1</g-tabs-item>
+        <g-tabs-item name="second">title2</g-tabs-item>
+        <g-tabs-item name="third">title3</g-tabs-item>
+    </g-tabs-head>
+    <g-tabs-body>
+        <g-tabs-pane name="first">1</g-tabs-pane>
+        <g-tabs-pane name="second">2</g-tabs-pane>
+        <g-tabs-pane name="third">3</g-tabs-pane>
+    </g-tabs-body>
+</g-tabs>
 
 </div>
 
