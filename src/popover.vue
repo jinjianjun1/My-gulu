@@ -1,6 +1,6 @@
 <template>
-    <div class="popover" @click.stop="xxx">
-        <div ref="contentWrapper" class="content-wrapper" v-if="this.visible" @click.stop>
+    <div class="popover" @click.stop="onClick">
+        <div ref="contentWrapper" class="content-wrapper" v-if="this.visible">
             <slot name="content"></slot>
         </div>
         <span  ref="triggerWrapper">
@@ -16,22 +16,31 @@
             return{visible:false}
         },
         methods:{
-            xxx(){
-                this.visible=!this.visible;
+            positionContent() {
+                document.body.appendChild(this.$refs.contentWrapper);
+                let {left, width, height, top} = this.$refs.triggerWrapper.getBoundingClientRect();
+                this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
+                this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+            },
+            listenToDocument() {
+                let eventHandle = (e) => {
+                    if (!this.$refs.contentWrapper.contains(e.target)) {
+                        this.visible = false;
+                        document.removeEventListener('click', eventHandle)
+                    }
+                };
+                document.addEventListener('click', eventHandle)
+            },
+            onShow(){
+                this.$nextTick(()=>{
+                    this.positionContent();
+                    this.listenToDocument()
+                });
+            },
+            onClick(e) {
+                if (this.$refs.triggerWrapper.contains(e.target)) this.visible = !this.visible;
                 if (this.visible ===true){
-                    this.$nextTick(()=>{
-                        document.body.appendChild(this.$refs.contentWrapper);
-                        let {left,width,height,top}=this.$refs.triggerWrapper.getBoundingClientRect();
-                        this.$refs.contentWrapper.style.left=left+window.scrollX+'px';
-                        this.$refs.contentWrapper.style.top=top+window.scrollY+'px';
-
-
-                        let eventHandle=()=>{
-                            this.visible=false;
-                            document.removeEventListener('click',eventHandle)
-                        };
-                        document.addEventListener('click',eventHandle)
-                    });
+                   this.onShow()
                 }
             }
         }
