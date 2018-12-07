@@ -29,11 +29,13 @@
 
 <style scoped lang="scss">
     $tab-height:40px;
+    $border-color:#ddd;
     .tabs-head{
         display: flex;
         justify-content: flex-start;
         height: $tab-height  ;
         position: relative;
+        border-bottom: 1px solid $border-color;
         >.head-wrapper{
             display: flex;
         }
@@ -45,6 +47,10 @@
         }
         >.actions-wrapper{
             margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1em;
         }
     }
 </style>
