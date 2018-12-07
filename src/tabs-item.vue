@@ -30,23 +30,24 @@
         },
         methods:{
             xxx(){
-                this.eventBus.$emit('update:selected',this.name)
+                this.eventBus.$emit('update:selected',this.name,this.$el)
             }
         },
         created() {
             this.eventBus.$on('update:selected',(name)=>{
               this.active = this.name === name;
-
             })
         }
     }
 </script>
 
 <style scoped lang="scss">
+$color:blue;
 .tabs-item{
-    flex-shrink: 0;
-    padding: 0 2em;
-    &.active{
-        background: red;}
+flex-shrink: 0;padding: 0 2em;cursor: pointer;height: 100%;display: flex;align-items: center;
+
+&.active{
+    color:$color
+}
 }
 </style>

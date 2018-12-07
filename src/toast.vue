@@ -57,7 +57,7 @@
     },
         methods: {
             updateStyle() {
-                this.$nextTick(() => {
+                this.$nextTick(() => {//因为mounted的时候还没有高
                     this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
                 });
             },
