@@ -1,6 +1,6 @@
 <template>
 
-    <div class="tabs-item" :class="classes" @click="onClick">
+    <div class="tabs-item" :class="classes" @click="onClick" :data-name="name">
         <slot></slot>
     </div>
 </template>
@@ -34,12 +34,15 @@
             onClick(){
                 if (this.disabled)return;
                 this.eventBus.$emit('update:selected',this.name,this)
+                this.$emit('click',this)//为了测试添加的代码
             }
         },
         created() {
-            this.eventBus.$on('update:selected',(name)=>{
-              this.active = this.name === name;
-            })
+            if(this.eventBus){
+                this.eventBus.$on('update:selected',(name)=>{
+                    this.active = this.name === name;
+                })
+            }
         }
     }
 </script>
@@ -59,6 +62,7 @@ flex-shrink: 0;
 }
 &.disabled{
     color: $disabled-style ;
+    cursor: not-allowed;
 }
 }
 </style>

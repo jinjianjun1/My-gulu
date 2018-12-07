@@ -29,6 +29,9 @@
         },
         created() {},
         mounted() {
+            if (this.$children.length===0){
+               console&&console.warn&& console.warn('你没有传入正确的子组件 tabs-head & tabs-body')
+            }
             this.$children.forEach(vm=>{
                 if (vm.$options.name==='GuluTabsHead'){
                     vm.$children.forEach(childVm=>{
