@@ -1,6 +1,6 @@
 <template>
     <div class="popover" @click="onClick" ref="popover">
-        <div ref="contentWrapper" class="content-wrapper" v-if="this.visible">
+        <div ref="contentWrapper" class="content-wrapper" v-if="visible">
             <slot name="content"></slot>
         </div>
         <span  ref="triggerWrapper">
@@ -23,14 +23,14 @@
                 this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
             },
             onClickEvent(e) {
-
+                console.log(this.$refs.popover);
+                console.log(this.$refs.popover.contains(e.target));
                 if (this.$refs.popover&&
                     (this.$refs.popover===e.target ||this.$refs.popover.contains(e.target)
                     )) {
                     return;
                 }
                 this.close();
-
             },
             open(){
                 this.visible=true;
