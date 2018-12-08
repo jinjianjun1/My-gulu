@@ -51,6 +51,9 @@ new Vue({
         look(e){
             console.log(e);
        },
+        ooo(){
+            console.log('11111')
+        },
         showtoast1(){
             this.showToast('top')
         },showtoast2(){

@@ -1,5 +1,5 @@
 <template>
-    <div class="popover" @click.stop="onClick">
+    <div class="popover" @click="onClick" ref="popover">
         <div ref="contentWrapper" class="content-wrapper" v-if="this.visible">
             <slot name="content"></slot>
         </div>
@@ -22,26 +22,37 @@
                 this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
                 this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
             },
-            listenToDocument() {
-                let eventHandle = (e) => {
-                    if (!this.$refs.contentWrapper.contains(e.target)) {
-                        this.visible = false;
-                        document.removeEventListener('click', eventHandle)
-                    }
-                };
-                document.addEventListener('click', eventHandle)
+            onClickEvent(e) {
+
+                if (this.$refs.popover&&
+                    (this.$refs.popover===e.target ||this.$refs.popover.contains(e.target)
+                    )) {
+                    return;
+                }
+                this.close();
+
             },
-            onShow(){
+            open(){
+                this.visible=true;
                 this.$nextTick(()=>{
                     this.positionContent();
-                    this.listenToDocument()
+                    document.addEventListener('click', this.onClickEvent)
                 });
             },
+            close(){
+                this.visible=false;
+                document.removeEventListener('click', this.onClickEvent);
+                console.log('关闭')
+            },
             onClick(e) {
-                if (this.$refs.triggerWrapper.contains(e.target)) this.visible = !this.visible;
-                if (this.visible ===true){
-                   this.onShow()
+                if (this.$refs.triggerWrapper.contains(e.target)) {
+                    if (this.visible ===true){
+                       this.close()
+                } else {
+                        this.open()
+                    }
                 }
+
             }
         }
     }
