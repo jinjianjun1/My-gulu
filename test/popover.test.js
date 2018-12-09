@@ -23,13 +23,32 @@ describe('Popover', () => {
         const vm=new Vue({
             el:div
         });
-                vm.$el.querySelector('button').click();
-                vm.$nextTick(()=>{
-                    const  {contentWrapper}=vm.$refs.a.$refs;
-                    expect(contentWrapper.classList.contains('position-right')).to.be.true;
-                    done()
-                })
-
-
+        vm.$el.querySelector('button').click();
+        vm.$nextTick(()=>{
+            const  {contentWrapper}=vm.$refs.a.$refs;
+            expect(contentWrapper.classList.contains('position-right')).to.be.true;
+            done()
+        })
+    })
+    xit('可以设置trigger.', (done) => {
+        Vue.component('g-popover',Popover);
+        const  div  =document.createElement('div');
+        document.body.appendChild(div);
+        div.innerHTML=`<g-popover tirgger="hover" ref="a">
+        <template slot="content" >
+            今天天气还可以
+        </template>
+        <button>点我 </button>
+    </g-popover>`;
+        const vm=new Vue({
+            el:div
+        });
+       let event =new Event('mouseenter');
+       vm.$el.dispatchEvent(event)
+        vm.$nextTick(()=>{
+            const  {contentWrapper}=vm.$refs.a.$refs;
+            expect(contentWrapper).to.exist
+            done()
+        })
     })
 });
