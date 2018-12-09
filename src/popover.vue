@@ -110,7 +110,6 @@
             close(){
                 this.visible=false;
                 document.removeEventListener('click', this.onClickEvent);
-                console.log('关闭')
             },
             onClick(e) {
                 if (this.$refs.triggerWrapper.contains(e.target)) {
