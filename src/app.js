@@ -47,7 +47,7 @@ new Vue({
     data:{
       isloading1:false,
         isloading2:false,
-        selectTab:'2'
+        selectTab:['2','1']
     },
     created() {
 

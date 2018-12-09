@@ -13,7 +13,7 @@
     export default {
         name: "collapse-item",
         data(){return{
-           open:false
+           open:false,
         }},
         props:{
             title:{
@@ -25,21 +25,21 @@
                 required: true
             }
         },
-        mounted(){
-            this.eventBus.$on('update:selected',(name)=>{
-                if(name!==this.name){
-                    this.close()
-                }else{
-                    this.show()
+        mounted: function () {
+            this.eventBus.$on('update:selected', (names) => {
+                if (names.indexOf(this.name) >= 0) {
+                    this.open = true
+                } else {
+                    this.open = false
                 }
             })
         },
         methods:{
             toogle(){
                 if(this.open){
-                    this.close()
+                    this.eventBus && this.eventBus.$emit('update:removeSelected',this.name)
                 }else{
-                    this.eventBus.$emit('update:selected',this.name)
+                    this.eventBus && this.eventBus.$emit('update:addSelected',this.name)
                 }
             },
             close(){
