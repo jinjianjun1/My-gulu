@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-minify && karma start --single-run"
+    "test": "parcel build test/* --no-minify && karma start --single-run",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -22,12 +24,14 @@
   },
   "homepage": "https://github.com/jinjianjun1/My-gulu#readme",
   "dependencies": {
+    "node-sass": "^4.11.0",
     "parcel": "^1.10.3",
     "vue": "^2.5.17",
     "vue-hot-reload-api": "^2.3.1"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.3.0",
+    "babel": "^6.23.0",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
     "karma": "^3.1.1",
@@ -39,9 +43,11 @@
     "mocha": "^5.2.0",
     "parcel-bundler": "^1.10.3",
     "sass": "^1.15.1",
+    "sass-loader": "^7.1.0",
     "sinon": "^7.1.1",
     "sinon-chai": "^3.3.0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "vuepress": "^0.14.8"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
