@@ -1,4 +1,5 @@
 module.exports = {
+    base:'/My-gulu/',
     title: 'J-UI',
     description: '一个正在完善的UI框架',
     themeConfig: {
