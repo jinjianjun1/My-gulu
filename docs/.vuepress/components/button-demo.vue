@@ -6,9 +6,7 @@
         <g-button loading>loading</g-button>
         <hr>
         <h3>使用方法</h3>
-        <pre>
-        <code>{{content}}</code>
-        </pre>
+        <pre><code>{{content}}</code></pre>
     </div>
 </template>
 
@@ -24,7 +22,7 @@
                 content:`<g-button>默认样式</g-button> <g-button icon="settings">设置</g-button>
         <g-button disabled>disabled</g-button>
         <g-button icon="delate" iconPosition="right">delate</g-button>
-        <g-button loading>loading</g-button>`
+        <g-button loading>loading</g-button>`.replace(/\t+| +/g,'').trim()
             }
         }
     }
