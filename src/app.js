@@ -20,31 +20,86 @@ import TabsPane from './tabs-pane'
 import Popover from './popover'
 import Collapse from './collapse'
 import CollapseItem from './collapse-item'
-Vue.component('g-header',Header);
-Vue.component('g-layout',Layout);
-Vue.component('g-sidebar',Sidebar);
-Vue.component('g-footer',Footer);
-Vue.component('g-content', Content);
+import Cascader from './cascader'
 Vue.component('g-button',Button);
-Vue.component('g-icon',Icon);
 Vue.component('g-button-group',ButtonGroup);
-Vue.component('g-input',Input);
+Vue.component('g-cascader',Cascader);
 Vue.component('g-col', Col);
-Vue.component('g-row',Row);
-Vue.component('g-toast',Toast);
-Vue.use(plugin);
-Vue.component('g-tabs-pane',TabsPane);
-Vue.component('g-tabs-item',TabsItem);
-Vue.component('g-tabs-head',TabsHead);
-Vue.component('g-tabs-body',TabsBody);
-Vue.component('g-tabs',Tabs);
-Vue.component('g-popover',Popover);
 Vue.component('g-collapse',Collapse);
 Vue.component('g-collapse-item',CollapseItem);
-
+Vue.component('g-content', Content);
+Vue.component('g-footer',Footer);
+Vue.component('g-header',Header);
+Vue.component('g-icon',Icon);
+Vue.component('g-input',Input);
+Vue.component('g-layout',Layout);
+Vue.component('g-popover',Popover);
+Vue.component('g-row',Row);
+Vue.component('g-sidebar',Sidebar);
+Vue.component('g-tabs',Tabs);
+Vue.component('g-tabs-body',TabsBody);
+Vue.component('g-tabs-head',TabsHead);
+Vue.component('g-tabs-item',TabsItem);
+Vue.component('g-tabs-pane',TabsPane);
+Vue.component('g-toast',Toast);
+Vue.use(plugin);
 new Vue({
    el:'#app',
     data:{
+       source:[{
+           name:'山西',
+               children:[
+                   {name:'临汾',
+                       children: [
+                           {name:'市辖区'},
+                           {name:'尧都区'},
+                           {name:'襄汾县'},
+                       ]
+                   },
+                   {name:'运城',
+                       children: [
+                           {name:'市辖区'},
+                           {name:'12312'},
+                           {name:'12431'},
+                       ]
+                   }
+               ],
+           }, {name:'山东',
+               children:[
+                   {name:'市名1',
+                       children: [
+                           {name:'区3'},
+                           {name:'区2'},
+                           {name:'区1'},
+                       ]
+                   },
+                   {name:'市名2',
+                       children: [
+                           {name:'市辖区'},
+                           {name:'12312'},
+                           {name:'12431'},
+                       ]
+                   }
+               ],
+           }, {name:'杭州',
+               children:[
+                   {name:'市名x',
+                       children: [
+                           {name:'区名q'},
+                           {name:'区名s'},
+                           {name:'区名v'},
+                       ]
+                   },
+                   {name:'市名ss',
+                       children: [
+                           {name:'市辖区'},
+                           {name:'区名sd'},
+                           {name:'区名szzz'},
+                       ]
+                   }
+               ],
+           }
+       ],
       isloading1:false,
         isloading2:false,
         selectTab:['2','1']
@@ -83,89 +138,3 @@ new Vue({
     }
 });
 
-// import chai from 'chai'
-// import spies from 'chai-spies'
-// chai.use(spies)
-// const expect = chai.expect;
-//单元测试
-// {
-//     const Constructor =Vue.extend(Button);
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:'settings',
-//         },
-//
-//     });
-//     vm.$mount();
-//     let useElement=vm.$el.querySelector('use');
-//     let href=useElement.getAttribute('xlink:href');
-//     expect(href).to.eq('#i-settings');
-//     vm.$el.remove();
-//     vm.$destroy()
-//
-// }
-// {
-//     const Constructor =Vue.extend(Button);
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:'settings',
-//             loading:true
-//         },
-//     });
-//     vm.$mount();
-//     let useElement=vm.$el.querySelector('use');
-//     let href=useElement.getAttribute('xlink:href');
-//     expect(href).to.eq('#i-loading');
-//     vm.$el.remove();
-//     vm.$destroy()
-// }
-// {
-//     const div =document.createElement('div');
-//     document.body.appendChild(div);
-//     const Constructor =Vue.extend(Button);
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:'settings',
-//         },
-//     });
-//     vm.$mount(div);//把div放到页面上渲染
-//     let svg=vm.$el.querySelector('svg');
-//     let {order}=window.getComputedStyle(svg);
-//     expect(order).to.eq('1');
-//     vm.$el.remove();
-//     vm.$destroy()
-// }
-// {
-//     const div =document.createElement('div');
-//     document.body.appendChild(div);
-//     const Constructor =Vue.extend(Button);
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:'settings',
-//             loading:true
-//         },
-//     });
-//     vm.$mount(div);//把div放到页面上渲染
-//     let svg=vm.$el.querySelector('svg');
-//     let {order}=window.getComputedStyle(svg);
-//     expect(order).to.eq('1');
-//     vm.$el.remove();
-//     vm.$destroy()
-// }
-// {
-//     //mock
-//     const Constructor =Vue.extend(Button);
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:'settings',
-//         },
-//     });
-//     vm.$mount();
-//     let spy=chai.spy(()=>{});
-//     vm.$on('click',spy);
-//     let button=vm.$el;
-//     button.click();
-//     expect(spy).to.have.been.called();
-//     vm.$el.remove();
-//     vm.$destroy()
-// }
