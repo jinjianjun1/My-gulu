@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>11111</p>
-        <g-cascader :source="source" height="200px">
+        <g-cascader :source="source" height="200px" :selected="selected" @update:selected="selected=$event">
         </g-cascader>
         <p>2222222</p>
     </div>
@@ -16,8 +16,12 @@
             'g-button':Button,
             'g-cascader':Cascader
         },
+        mounted(){
+            console.log(this.selected);
+        },
         data(){
             return{
+                selected:[],
                 source:[{
                     name:'山西',
                     children:[
@@ -77,7 +81,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     *{margin: 0;padding:0;box-sizing: border-box}
     :root{;--font-size:14px;}
     body{

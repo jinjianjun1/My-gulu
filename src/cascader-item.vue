@@ -1,13 +1,17 @@
 <template>
     <div class="cascader-item" :style="{height:height}">
+        <div>{{selected[level]&&selected[level].name}}</div>
+        <div>{{level}}</div>
         <div class="left">
-            <div class="label" v-for="item in items" @click="leftSelected=item">
+            <div class="label" v-for="item in items" @click="onClickLabel(item)">
                 {{item.name}}
                 <span v-if="item.children"> <g-icon class="icon" name="right"></g-icon> </span>
             </div>
         </div>
         <div class="right" v-if="rightItems">
-            <cascader-item  :items="rightItems" :height="height"></cascader-item>
+            <cascader-item
+                    :selected="selected" @update:selected="onUpdateSelected"
+                    :level="level+1" :items="rightItems" :height="height"></cascader-item>
         </div>
     </div>
 </template>
@@ -21,12 +25,15 @@
         },
         computed:{
             rightItems(){
-                if (this.leftSelected&&this.leftSelected.children){
-                    return this.leftSelected.children
+                let currentSelected=this.selected[this.level];
+                if (currentSelected&&currentSelected.children){
+                    return currentSelected.children
                 }else{
                     return null
                 }
             }
+        },
+        mounted(){
         },
         props:{
             items:{
@@ -34,13 +41,27 @@
             },
             height:{
                 type:String
+            },
+            selected:{
+                type:Array,
+                default:()=>[]
+            },
+            level:{
+                type:Number,
+                default:0
             }
         },
-        data(){
-            return{
-                leftSelected:null
+        methods:{
+            onClickLabel(item){
+                let copy= JSON.parse(JSON.stringify(this.selected));
+                copy[this.level]=item;
+                this.$emit('update:selected',copy);
+            },
+            onUpdateSelected(newSelected){
+                this.$emit('update:selected',newSelected)
             }
-        }
+        },
+
 
     };
 </script>
