@@ -4,7 +4,7 @@
             {{result || '&nbsp'}}
         </div>
         <div class="popover-wrapper"  v-if="popoverVisible">
-            <cascader-item  :selected="selected" :items="source"
+            <cascader-item  :selected="selected" :items="source" :load-data="loadData"
                             :height="height" @update:selected="onUpdateSelected">
 
             </cascader-item>
@@ -14,6 +14,7 @@
 
 <script>
     import cascaderItem from './cascader-item'
+
     export default {
         name: "GuluCascader",
         props:{
@@ -26,6 +27,9 @@
             selected:{
                 type:Array,
                 default:()=>[]
+            },
+            loadData: {
+                type: Function
             }
         },
         data(){
@@ -36,6 +40,46 @@
         methods:{
             onUpdateSelected(newSelected){
                 this.$emit('update:selected',newSelected);
+                let lastItem = newSelected[newSelected.length - 1];
+                let simple = (children, id) => {
+                    return children.filter(item => item.id === id)[0]
+                };
+                let complex = (children, id) => {
+                    let noChildren = [];
+                    let hasChildren = [];
+                    children.forEach(item => {
+                        if (item.children) {
+                            hasChildren.push(item)
+                        } else {
+                            noChildren.push(item)
+                        }
+                    });
+                    let found = simple(noChildren, id);
+                    if (found) {
+                        return found
+                    } else {
+                        found=simple(hasChildren,id);
+                        if (found){return found}
+                        else {
+                           for (let i=0;i<hasChildren.length;i++){
+                               found =complex(hasChildren[i].children,id);
+                               if (found){
+                                   return found
+                               }
+                           }
+                           return undefined
+                        }
+                    }
+                };
+                let updateSource = (result) => {
+                    let copy = JSON.parse(JSON.stringify(this.source));
+                    let toUpdate=complex(copy,lastItem.id);
+                    toUpdate.children=result;
+                    this.$emit('update:source',copy)
+                };
+                if (!lastItem.isLeaf){
+                    this.loadData&&this.loadData(lastItem, updateSource)//掉回调的时候传一个回调，这个函数理论上会被调用
+                }
             },
 
         },
