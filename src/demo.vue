@@ -3,6 +3,9 @@
         <g-cascader :source.sync="source" height="200px" :selected.sync="selected"
                      :load-data="loadData">
         </g-cascader>
+        <g-cascader :source.sync="source" height="200px" :selected.sync="selected"
+                     :load-data="loadData">
+        </g-cascader>
         <g-popover>
             <button>点我</button>
             <template slot="content">我是content</template>

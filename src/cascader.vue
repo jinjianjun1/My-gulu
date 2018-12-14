@@ -1,5 +1,5 @@
 <template>
-    <div class="cascader" ref="cascader">
+    <div class="cascader" ref="cascader" v-click-out-side="close">
         <div class="trigger" @click="toggle">
             {{result || '&nbsp'}}
         </div>
@@ -14,9 +14,12 @@
 
 <script>
     import cascaderItem from './cascader-item'
-
+    import ClickOutSide from './click-outside'
     export default {
         name: "GuluCascader",
+        directives:{
+            ClickOutSide
+        },
         props:{
             source:{
                 type:Array
@@ -38,22 +41,21 @@
             }
         },
         methods:{
-            onClickDocument(e){
-                let {cascader}=this.$refs;
-                let {target}=e;
-                if (cascader===target ||cascader.contains(target)){return}
-                this.close()
-            },
+            // onClickDocument(e){
+            //     let {cascader}=this.$refs;
+            //     let {target}=e;
+            //     if (cascader===target ||cascader.contains(target)){return}
+            //     this.close()
+            // },
             open(){
                 this.popoverVisible=true;
-                this.$nextTick(()=>{
-                    document.addEventListener('click',this.onClickDocument)
-                })
+                // this.$nextTick(()=>{
+                //     document.addEventListener('click',this.onClickDocument)
+                // })
             },
             close(){
                 this.popoverVisible=false;
-                console.log('close');
-                document.removeEventListener('click',this.onClickDocument)
+                // document.removeEventListener('click',this.onClickDocument)
 
             },
             toggle(){
