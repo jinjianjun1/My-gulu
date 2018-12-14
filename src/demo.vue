@@ -1,18 +1,18 @@
 <template>
     <div>
-        <p>{{ selected && selected[0] &&selected[0].name || '空' }}</p>
-        <p>{{ selected && selected[1] &&selected[1].name || '空' }}</p>
-        <p>{{ selected && selected[2] &&selected[2].name || '空' }}</p>
         <g-cascader :source.sync="source" height="200px" :selected.sync="selected"
                      :load-data="loadData">
         </g-cascader>
-        {{source}}
+        <g-popover>
+            <button>点我</button>
+            <template slot="content">我是content</template>
+        </g-popover>
     </div>
 </template>
 
 <script>
     import db from './db'
-
+import Popover from './popover'
     function ajax(parentId=0){
         return new Promise((resolve, reject) =>{
             setTimeout(()=>{
@@ -35,7 +35,8 @@
         name:'demo',
         components:{
             'g-button':Button,
-            'g-cascader':Cascader
+            'g-cascader':Cascader,
+            'g-popover':Popover
         },
         created(){
             ajax(0).then(result=>{
@@ -44,12 +45,6 @@
 
         },
         methods:{
-            // pickNext(){
-            //     ajax(this.selected[0].id).then(result=>{
-            //         let lastLevelSelected=this.source.filter(item=>item.id===this.selected[0].id)[0]; //filter返回数组
-            //         this.$set(lastLevelSelected,'children',result)
-            //     })
-            // },
             loadData(item,updateSource){
                 let {id,parent_id}=item;
                 ajax(id).then(result=>{

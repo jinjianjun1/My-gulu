@@ -78,6 +78,7 @@
         padding: .3em 0;
         overflow: auto;
         .label{
+            white-space: nowrap;
             padding: .3em .5em;
             display: flex;
             align-items: center;
