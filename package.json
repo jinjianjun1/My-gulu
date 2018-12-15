@@ -9,6 +9,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "sinon-chai": "^3.3.0",
     "vue": "^2.5.17"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
     "chai": "^4.1.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "sinon": "^7.2.2",
     "vue-template-compiler": "^2.5.17"
   },
   "postcss": {
