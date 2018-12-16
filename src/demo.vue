@@ -1,70 +1,45 @@
 <template>
-    <div>
-        <g-cascader :source.sync="source" height="200px" :selected.sync="selected"
-                     :load-data="loadData">
-        </g-cascader>
-        <g-popover>
-            <button>点我</button>
-            <template slot="content">我是content</template>
-        </g-popover>
+    <div >
+    <g-slides :selected.sync="selected" auto-play >
+        <g-slides-item name="jason">
+            <div class="box">1</div>
+        </g-slides-item>
+        <g-slides-item name="kklote">
+            <div class="box">2</div>
+        </g-slides-item>
+        <g-slides-item name="sdsds">
+            <div class="box">3</div>
+        </g-slides-item>
+    </g-slides>
     </div>
 </template>
 
 <script>
-    import db from './db'
-import Popover from './popover'
-    function ajax(parentId=0){
-        return new Promise((resolve, reject) =>{
-            setTimeout(()=>{
-                let result= db.filter(item=>item.parent_id===parentId);
-                result.forEach(node=>{
-                  if( db.filter(item=>item.parent_id===node.id).length>0){
-                      node.isLeaf=false
-                  }else{
-                      node.isLeaf=true
-                  }
-                });
-                resolve(result)
-            },300);
-        } )
-    }
-
-    import Button from './button'
-    import Cascader from './cascader'
+import GSlides from './slides'
+import GSlidesItem from './slides-item'
     export default {
         name:'demo',
         components:{
-            'g-button':Button,
-            'g-cascader':Cascader,
-            'g-popover':Popover
-        },
-        created(){
-            ajax(0).then(result=>{
-                this.source=result
-            });
-
-        },
-        methods:{
-            loadData(item,updateSource){
-                let {id,parent_id}=item;
-                ajax(id).then(result=>{
-                    updateSource(result)
-                })
-            }
+            GSlides,
+            GSlidesItem
         },
         data(){
             return{
-                selected:[],
-                source:[]
+                selected:undefined
             }
+        },
+        created() {
+
         }
     }
 </script>
 
 <style>
     *{margin: 0;padding:0;box-sizing: border-box}
-    :root{;--font-size:14px;}
-    body{
-        font-size: var(--font-size);
+    .box{
+        border: 1px solid red;
+        background: #dddddd;
+        width: 200px;
+        height: 200px;
     }
 </style>
