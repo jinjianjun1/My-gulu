@@ -25,7 +25,7 @@ import GSlidesItem from './slides-item'
         },
         data(){
             return{
-                selected:'1'
+                selected:'2'
             }
         },
         created() {
@@ -37,9 +37,11 @@ import GSlidesItem from './slides-item'
 <style>
     *{margin: 0;padding:0;box-sizing: border-box}
     .box{
-        border: 1px solid red;
         background: #dddddd;
         width: 100%;
         height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>

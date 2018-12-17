@@ -19,8 +19,6 @@
         },
         computed:{
             visible(){
-                console.log(`我的名字是${this.name}`);
-                console.log(`我是方向${this.reverse ?'正向':'反向'}`);
                 return this.selected===this.name
             }
         },
@@ -50,7 +48,7 @@
     height: 100%;
 }
 .slide-enter-active,.slide-leave-active{
-    transition: all 2s;
+    transition: all 0.6s;
 }
 .slide-enter{
     transform: translateX(100%);
