@@ -1,6 +1,6 @@
 <template>
     <transition name="slide">
-    <div class="g-slides-item" v-if="visible">
+    <div class="g-slides-item" v-if="visible" :class="{reverse}">
         <slot></slot>
     </div>
     </transition>
@@ -10,24 +10,30 @@
     export default {
         name: "slides-item",
         props:{
-            name:String,
-            required:true
+            name:{
+                type: String,
+                required:true
+            },
+
+
         },
         computed:{
             visible(){
+                console.log(`我的名字是${this.name}`);
+                console.log(`我是方向${this.reverse ?'正向':'反向'}`);
                 return this.selected===this.name
             }
         },
         data(){
             return{
-                selected:undefined
+                selected:undefined,
+                reverse:false
             }
         },
         updated(){
 
         },
         mounted() {
-            console.log(this.visible);
         }
     }
 </script>
@@ -40,15 +46,22 @@
     position: absolute;
     left: 0;
     top: 0;
+    width: 100%;
+    height: 100%;
 }
 .slide-enter-active,.slide-leave-active{
-    transition: all 1s;
+    transition: all 2s;
 }
 .slide-enter{
     transform: translateX(100%);
 }
+.slide-enter.reverse{
+    transform: translateX(-100%);
+}
 .slide-leave-to{
     transform: translateX(-100%);
+}.slide-leave-to.reverse{
+    transform: translateX(100%);
 }
 
 </style>

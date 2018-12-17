@@ -1,13 +1,13 @@
 <template>
     <div >
     <g-slides :selected.sync="selected" auto-play >
-        <g-slides-item name="jason">
+        <g-slides-item name="1">
             <div class="box">1</div>
         </g-slides-item>
-        <g-slides-item name="kklote">
+        <g-slides-item name="2">
             <div class="box">2</div>
         </g-slides-item>
-        <g-slides-item name="sdsds">
+        <g-slides-item name="3">
             <div class="box">3</div>
         </g-slides-item>
     </g-slides>
@@ -25,7 +25,7 @@ import GSlidesItem from './slides-item'
         },
         data(){
             return{
-                selected:undefined
+                selected:'1'
             }
         },
         created() {
@@ -39,7 +39,7 @@ import GSlidesItem from './slides-item'
     .box{
         border: 1px solid red;
         background: #dddddd;
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        height: 300px;
     }
 </style>
