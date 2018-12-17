@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: "slides-item",
+        name: "GuluSlidesItem",
         props:{
             name:{
                 type: String,
