@@ -1,47 +1,31 @@
 <template>
-    <div >
-    <g-slides :selected.sync="selected" auto-play >
-        <g-slides-item name="1">
-            <div class="box">1</div>
-        </g-slides-item>
-        <g-slides-item name="2">
-            <div class="box">2</div>
-        </g-slides-item>
-        <g-slides-item name="3">
-            <div class="box">3</div>
-        </g-slides-item>
-    </g-slides>
+    <div>
+        <g-menu  :selected.sync="selected" >
+            <g-menu-item name="1">title11111111111</g-menu-item>
+            <g-menu-item name="2">title222222222</g-menu-item>
+            <g-menu-item name="3">title333333333</g-menu-item>
+        </g-menu>
     </div>
+
 </template>
 
 <script>
-import GSlides from './slides/slides'
-import GSlidesItem from './slides/slides-item'
+import GMenu from './menu'
+import GMenuItem from './menu-item'
+import GSubMenu from './sub-menu'
+
     export default {
         name:'demo',
-        components:{
-            GSlides,
-            GSlidesItem
-        },
+        components:{GMenu, GMenuItem, GSubMenu,},
         data(){
             return{
-                selected:undefined
+                selected:['1']
             }
-        },
-        created() {
-
         }
     }
 </script>
 
-<style>
+<style scoped>
     *{margin: 0;padding:0;box-sizing: border-box}
-    .box{
-        background: #dddddd;
-        width: 100%;
-        height: 300px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+
 </style>
