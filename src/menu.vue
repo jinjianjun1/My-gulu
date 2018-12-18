@@ -7,6 +7,11 @@
 <script>
     export default {
         name: "GuluMenu",
+        provide(){
+            return {
+                root:this
+            }
+        },
         props:{
             selected:{
                 type: Array,
@@ -17,6 +22,11 @@
                 default:false
             }
         },
+        data(){
+            return{
+                items:[]
+            }
+        },
         updated(){
             this.updateChildren()
         },
@@ -25,6 +35,9 @@
             this.listenToChildren()
         },
         methods:{
+            addItem(vm){
+                this.items.push(vm);
+            },
             updateChildren(){
                 this.items.forEach(vm=>{
                     vm.selected = this.selected.indexOf(vm.name) >= 0;
@@ -49,9 +62,7 @@
             }
         },
         computed:{
-            items(){
-                return this.$children.filter(vm=>vm.$options.name==='GuluMenuItem')
-            }
+
         }
     }
 </script>

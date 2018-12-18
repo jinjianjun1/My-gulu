@@ -2,8 +2,14 @@
     <div>
         <g-menu  :selected.sync="selected" >
             <g-menu-item name="1">title11111111111</g-menu-item>
-            <g-menu-item name="2">title222222222</g-menu-item>
+            <g-sub-menu>
+                <template slot="title">sub-title</template>
+                <g-menu-item name="2sd">looK</g-menu-item>
+                <g-menu-item name="214">Ksad</g-menu-item>
+                <g-menu-item name="142">sdsdsd</g-menu-item>
+            </g-sub-menu>
             <g-menu-item name="3">title333333333</g-menu-item>
+
         </g-menu>
     </div>
 

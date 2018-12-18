@@ -9,6 +9,7 @@
 <script>
     export default {
         name: "GuluMenuItem",
+        inject:['root'],
         data(){
             return{
                 selected:false
@@ -26,6 +27,9 @@
             }
         },
         mounted() {
+        },
+        created() {
+            this.root.addItem(this)
         }
     }
 </script>
@@ -34,7 +38,6 @@
     .g-menu-item{
 
     padding:8px 16px;
-    border: 1px solid black;
     &.selected{
         background: #ddd;
     }
