@@ -15,7 +15,7 @@
 
 <script>
     import cascaderItem from './cascader-item'
-    import ClickOutSide from './click-outside'
+    import ClickOutSide from '../click-outside'
     export default {
         name: "GuluCascader",
         directives:{
@@ -126,7 +126,7 @@
 </script>
 
 <style scoped lang="scss">
-@import "var";
+@import "../var";
 .cascader{
     position: relative;
     display: inline-block;

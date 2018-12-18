@@ -3,7 +3,7 @@ import { shallowMount,mount } from '@vue/test-utils'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
 chai.use(sinonChai);
-import Button from '@/button.vue'
+import Button from '../../src/button/button'
 
 describe('Button.vue', () => {
     it('存在.', () => {
