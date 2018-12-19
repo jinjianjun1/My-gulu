@@ -74,6 +74,6 @@
     display: flex;
     border-bottom: 1px solid $gray;
     cursor: default;
-
+    user-select: none;
 }
 </style>

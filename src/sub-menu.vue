@@ -1,7 +1,10 @@
 <template>
     <div class="g-sub-menu" :class="{active}"  v-click-out-side="close">
-        <span @click="onClick">
+        <span class="g-sub-menu-label" @click="onClick">
             <slot name="title"></slot>
+            <span class="g-sub-menu-icon" :class="{open}">
+                <g-icon  name="right "></g-icon>
+            </span>
         </span>
         <div class="g-sub-menu-popover" v-show="open">
             <slot></slot>
@@ -10,14 +13,17 @@
 </template>
 
 <script>
-    // import ClickOutSide from 'E:\gulu-demo\src\click-outside.js'
     import ClickOutSide from './click-outside'
+    import GIcon from './icon'
     export default {
         name: "GuluSubMenu",
         data(){
             return {
                 open:false,
             }
+        },
+        components:{
+            GIcon
         },
         directives:{
             ClickOutSide
@@ -60,7 +66,6 @@
     &.active{
         position: relative;
         &::after{
-
             content: '';
             position: absolute;
             bottom: 0;
@@ -69,9 +74,12 @@
             width: 100%;
         }
     }
-    >span{
+    &-label{
         padding:8px 16px;
         display: block;
+    }
+    &-icon{
+        display: none;
     }
     &-popover{
         min-width: 6em;
@@ -87,9 +95,32 @@
         border-radius: $border-radius;
     }
 }
-    .g-sub-menu .g-sub-menu .g-sub-menu-popover{
-        top: 0;
-        left: 100%;
-        margin-left: 8px;
+    .g-sub-menu .g-sub-menu {
+        &.active{
+            &::after{
+                display: none;
+            }
+        }
+        .g-sub-menu-popover{
+            top: 0;
+            left: 100%;
+            margin-left: 8px;
+        }
+        .g-sub-menu-label{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .g-sub-menu-icon{
+            display: inline-flex;
+            transform: scale(.8);
+            fill: $light-color;
+            margin-left: 1em;
+            transition: transform 250ms;
+            &.open{
+
+             transform: rotate(180deg);
+            }
+        }
     }
 </style>
