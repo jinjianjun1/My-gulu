@@ -68,9 +68,11 @@
 </script>
 
 <style scoped lang="scss">
+@import "_var";
 .g-menu{
     display: flex;
-    border: 1px solid red;
+    border-bottom: 1px solid $gray;
+    cursor: default;
 
 }
 </style>

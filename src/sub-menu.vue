@@ -24,6 +24,7 @@
 </script>
 
 <style scoped lang="scss">
+    @import "var";
 .g-sub-menu{
     position: relative;
     >span{
@@ -31,11 +32,17 @@
         display: block;
     }
     &-popover{
+        min-width: 6em;
+        color: $light-color;
+        font-style: $font-size;
+        background: #fff;
+        margin-top: 1px ;
         position: absolute;
         top: 100%;
         left: 0;
-        border: 1px solid black;
         white-space: nowrap;
+        box-shadow: 0 0 3px fade_out(#000,.8) ;
+        border-radius: $border-radius;
     }
 }
     .g-sub-menu .g-sub-menu .g-sub-menu-popover{

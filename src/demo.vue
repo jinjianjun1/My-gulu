@@ -7,7 +7,7 @@
                 <g-menu-item name="culture">企业文化</g-menu-item>
                 <g-menu-item name="team">开发团队</g-menu-item>
                 <g-sub-menu>
-                    <template slot="title">sdsdsd</template>
+                    <template slot="title">联系方式</template>
                     <g-menu-item name="wechat">微信</g-menu-item>
                     <g-menu-item name="qq">QQ</g-menu-item>
                     <g-sub-menu>
@@ -17,7 +17,8 @@
                     </g-sub-menu>
                 </g-sub-menu>
             </g-sub-menu>
-            <g-menu-item name="3">title333333333</g-menu-item>
+            <g-menu-item name="ss">ss </g-menu-item>
+
 
         </g-menu>
     </div>

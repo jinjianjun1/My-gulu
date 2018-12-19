@@ -35,11 +35,28 @@
 </script>
 
 <style scoped lang="scss">
+    @import "var";
     .g-menu-item{
-
     padding:8px 16px;
     &.selected{
-        background: #ddd;
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom:0;
+            border-bottom: 2px solid $blue;
+            width: 100%;
+        }
     }
 }
+    .g-sub-menu .g-menu-item{
+
+        &.selected{
+            color: #000;
+        }
+        &::after{
+            display: none;
+        }
+    }
 </style>
