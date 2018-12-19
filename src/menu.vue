@@ -1,6 +1,6 @@
 <template>
     <div class="g-menu" >
-            <slot></slot>
+        <slot></slot>
     </div>
 </template>
 
@@ -24,7 +24,8 @@
         },
         data(){
             return{
-                items:[]
+                items:[],
+                namePath:[]
             }
         },
         updated(){

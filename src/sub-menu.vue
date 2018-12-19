@@ -1,5 +1,5 @@
 <template>
-    <div class="g-sub-menu">
+    <div class="g-sub-menu" :class="{active}"  v-click-out-side="close">
         <span @click="onClick">
             <slot name="title"></slot>
         </span>
@@ -10,15 +10,45 @@
 </template>
 
 <script>
+    // import ClickOutSide from 'E:\gulu-demo\src\click-outside.js'
+    import ClickOutSide from './click-outside'
     export default {
         name: "GuluSubMenu",
         data(){
-            return {open:false}
+            return {
+                open:false,
+            }
+        },
+        directives:{
+            ClickOutSide
+        },
+        props:{
+            name:{type:String,required:true}
+        },
+        inject:['root'],
+        computed:{
+            active(){
+                return   this.root.namePath.indexOf(this.name) >= 0;
+            },
         },
         methods:{
             onClick(){
-                this.open=!this.open
-            }
+                this.open=!this.open;
+                console.log(this.isActive);
+            },
+            close(){
+                this.open=false
+            },
+            updateNamePath(){
+                this.root.namePath.unshift(this.name);
+
+                if (this.$parent.updateNamePath ){
+                    this.$parent.updateNamePath()
+                }else {
+                    // this.root.namePath=[]?
+                }
+            },
+
         }
     }
 </script>
@@ -27,6 +57,18 @@
     @import "var";
 .g-sub-menu{
     position: relative;
+    &.active{
+        position: relative;
+        &::after{
+
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-bottom: 2px solid $blue;
+            width: 100%;
+        }
+    }
     >span{
         padding:8px 16px;
         display: block;
