@@ -6,15 +6,19 @@
                 <g-icon  name="right "></g-icon>
             </span>
         </span>
-        <transition name="x"
-                    @enter="enter"
-                    @after-enter="afterEnter"
-                    @leave="leave"
-                    @after-leave="afterLeave">
-            <div class="g-sub-menu-popover" :class="{vertical}" v-show="open">
+        <template v-if="vertical">
+            <transition name="x" @enter="enter" @after-enter="afterEnter"
+                        @leave="leave" @after-leave="afterLeave">
+                <div class="g-sub-menu-popover" :class="{vertical}" v-show="open">
+                    <slot></slot>
+                </div>
+            </transition>
+        </template>
+        <template v-else>
+            <div class="g-sub-menu-popover"  v-show="open">
                 <slot></slot>
             </div>
-        </transition>
+        </template>
 
     </div>
 </template>
@@ -124,12 +128,13 @@
             white-space: nowrap;
             box-shadow: 0 0 3px fade_out(#000,.8) ;
             border-radius: $border-radius;
+            transition: height 250ms;
+
             &.vertical{
                 position: static;
                 border-radius: 0;
                 box-shadow: none;
                 overflow: hidden;
-                transition: height 250ms;
 
             }
         }

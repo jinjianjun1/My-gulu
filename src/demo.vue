@@ -21,7 +21,7 @@
 
 
         </g-menu>
-        <g-menu  :selected.sync="selected" vertical style="width: 200px;margin: 20px;" >
+        <g-menu   :selected.sync="selected" vertical style="width: 200px;margin-top: 200px;" >
             <g-menu-item name="home">首页</g-menu-item>
             <g-sub-menu name="about">
                 <template slot="title">关于</template>
