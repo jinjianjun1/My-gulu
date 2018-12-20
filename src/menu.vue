@@ -1,5 +1,5 @@
 <template>
-    <div class="g-menu" >
+    <div class="g-menu" :class="{vertical}">
         <slot></slot>
     </div>
 </template>
@@ -9,32 +9,22 @@
         name: "GuluMenu",
         provide(){
             return {
-                root:this
-            }
-        },
-        props:{
-            selected:{
-                type: Array,
-                default: ()=>[]
+                root:this,
+                vertical:this.vertical
+             }
             },
-            multiple:{
-                type:Boolean,
-                default:false
-            }
+        props:{
+            selected:{type: Array, default: ()=>[]},
+            multiple:{type:Boolean, default:false},
+            vertical:{type:Boolean,default:false}
         },
         data(){
-            return{
-                items:[],
-                namePath:[]
-            }
+            return{items:[], namePath:[]}
         },
-        updated(){
-            this.updateChildren()
-        },
+        updated(){this.updateChildren()},
         mounted() {
             this.updateChildren();
-            this.listenToChildren()
-        },
+            this.listenToChildren()},
         methods:{
             addItem(vm){
                 this.items.push(vm);
@@ -62,9 +52,6 @@
                 })
             }
         },
-        computed:{
-
-        }
     }
 </script>
 
@@ -75,5 +62,9 @@
     border-bottom: 1px solid $gray;
     cursor: default;
     user-select: none;
+    &.vertical{
+        flex-direction: column;
+        border: 1px solid $gray;
+    }
 }
 </style>

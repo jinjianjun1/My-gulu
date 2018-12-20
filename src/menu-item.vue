@@ -5,31 +5,21 @@
         </div>
     </div>
 </template>
-
 <script>
     export default {
         name: "GuluMenuItem",
         inject:['root'],
         data(){
-            return{
-                selected:false
-            }
-        },
+            return{selected:false}},
         props:{
-            name:{
-                type:String,
-                required:true
-            },
+            name:{type:String, required:true},
         },
         methods:{
             onClick(){
                 this.root.namePath=[];
                 this.$parent.updateNamePath&&this.$parent.updateNamePath();
                 this.$emit('add:selected',this.name);
-
             }
-        },
-        mounted() {
         },
         created() {
             this.root.addItem(this)

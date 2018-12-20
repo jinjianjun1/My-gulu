@@ -6,9 +6,16 @@
                 <g-icon  name="right "></g-icon>
             </span>
         </span>
-        <div class="g-sub-menu-popover" v-show="open">
-            <slot></slot>
-        </div>
+        <transition name="x"
+                    @enter="enter"
+                    @after-enter="afterEnter"
+                    @leave="leave"
+                    @after-leave="afterLeave">
+            <div class="g-sub-menu-popover" :class="{vertical}" v-show="open">
+                <slot></slot>
+            </div>
+        </transition>
+
     </div>
 </template>
 
@@ -18,40 +25,59 @@
     export default {
         name: "GuluSubMenu",
         data(){
-            return {
-                open:false,
-            }
+            return {open:false,}
         },
-        components:{
-            GIcon
-        },
+        components:{GIcon},
         directives:{
             ClickOutSide
         },
         props:{
             name:{type:String,required:true}
         },
-        inject:['root'],
+        inject:['root','vertical'],
         computed:{
-            active(){
-                return   this.root.namePath.indexOf(this.name) >= 0;
-            },
+            active(){return   this.root.namePath.indexOf(this.name) >= 0;},
         },
         methods:{
+            enter(el,done){
+                el.style.height='auto';
+               let {height}= el.getBoundingClientRect();
+                el.style.height='0px';
+                el.getBoundingClientRect();
+               el.style.height=`${height}px`;
+               // this.$on('transitionend',()=>{
+               //     done()
+               // })
+                el.addEventListener('transitionend',()=>{
+                    done()
+                })
+            },
+            afterEnter(el){
+                el.style.height='auto';
+
+            },
+            leave(el,done){
+                let {height}= el.getBoundingClientRect();
+                el.style.height=`${height}px`;
+                el.getBoundingClientRect();
+                el.style.height=0;
+                this.$on('transitionend',()=>{
+                    done()
+                })
+            },
+            afterLeave(el){
+                el.style.height='auto'
+            },
             onClick(){
                 this.open=!this.open;
-                console.log(this.isActive);
             },
             close(){
                 this.open=false
             },
             updateNamePath(){
                 this.root.namePath.unshift(this.name);
-
                 if (this.$parent.updateNamePath ){
                     this.$parent.updateNamePath()
-                }else {
-                    // this.root.namePath=[]?
                 }
             },
 
@@ -61,40 +87,53 @@
 
 <style scoped lang="scss">
     @import "var";
-.g-sub-menu{
-    position: relative;
-    &.active{
+    .x-enter-active, .x-leave-active{
+    }
+    .fade-enter, .fade-leave-to{
+
+    }
+    .g-sub-menu{
         position: relative;
-        &::after{
-            content: '';
+        &.active{
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border-bottom: 2px solid $blue;
+                width: 100%;
+            }
+        }
+        &-label{
+            padding:8px 16px;
+            display: block;
+        }
+        &-icon{
+            display: none;
+        }
+        &-popover{
+            min-width: 6em;
+            color: $light-color;
+            font-style: $font-size;
+            background: #fff;
+            margin-top: 1px ;
             position: absolute;
-            bottom: 0;
+            top: 100%;
             left: 0;
-            border-bottom: 2px solid $blue;
-            width: 100%;
+            white-space: nowrap;
+            box-shadow: 0 0 3px fade_out(#000,.8) ;
+            border-radius: $border-radius;
+            &.vertical{
+                position: static;
+                border-radius: 0;
+                box-shadow: none;
+                overflow: hidden;
+                transition: height 250ms;
+
+            }
         }
     }
-    &-label{
-        padding:8px 16px;
-        display: block;
-    }
-    &-icon{
-        display: none;
-    }
-    &-popover{
-        min-width: 6em;
-        color: $light-color;
-        font-style: $font-size;
-        background: #fff;
-        margin-top: 1px ;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        white-space: nowrap;
-        box-shadow: 0 0 3px fade_out(#000,.8) ;
-        border-radius: $border-radius;
-    }
-}
     .g-sub-menu .g-sub-menu {
         &.active{
             &::after{
