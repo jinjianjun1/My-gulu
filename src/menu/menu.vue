@@ -45,7 +45,7 @@
 </script>
 
 <style scoped lang="scss">
-@import "_var";
+@import "var";
 .g-menu{
     display: flex;
     border-bottom: 1px solid $gray;

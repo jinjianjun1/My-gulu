@@ -24,8 +24,8 @@
 </template>
 
 <script>
-    import ClickOutSide from './click-outside'
-    import GIcon from './icon'
+    import ClickOutSide from '../click-outside'
+    import GIcon from '../icon'
     export default {
         name: "GuluSubMenu",
         data(){

@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import GMenu from './menu'
-import GMenuItem from './menu-item'
-import GSubMenu from './sub-menu'
+import GMenu from './menu/menu'
+import GMenuItem from './menu/menu-item'
+import GSubMenu from './menu/sub-menu'
 
     export default {
         name:'demo',
