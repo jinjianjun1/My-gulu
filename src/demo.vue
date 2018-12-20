@@ -1,7 +1,7 @@
 <template>
     <div>
         <g-menu  :selected.sync="selected"  >
-            <g-menu-item name="home">首页</g-menu-item>
+            <g-menu-item name="home"><a href="https:jirengu.com" target="_blank">点我进首页</a></g-menu-item>
             <g-sub-menu name="about">
                 <template slot="title">关于</template>
                 <g-menu-item name="culture">企业文化</g-menu-item>

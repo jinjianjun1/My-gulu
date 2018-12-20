@@ -1,5 +1,5 @@
 <template>
-    <div class="g-menu-item" :selected="selected" :class="{selected}" @click="onClick">
+    <div class="g-menu-item" :selected="selected" :class="{selected,vertical}" @click="onClick">
         <div>
         <slot></slot>
         </div>
@@ -8,7 +8,7 @@
 <script>
     export default {
         name: "GuluMenuItem",
-        inject:['root'],
+        inject:['root','vertical'],
         data(){
             return{selected:false}},
         props:{
@@ -30,23 +30,26 @@
 <style scoped lang="scss">
     @import "var";
     .g-menu-item{
-    padding:8px 16px;
-    &.selected{
+        padding:8px 16px;
         position: relative;
-        &::after{
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom:0;
-            border-bottom: 2px solid $blue;
-            width: 100%;
+        &:not(.vertical){
+            &.selected{
+                &::after{content: '';position: absolute;left: 0;bottom:0;border-bottom: 2px solid $blue;width: 100%;}
+            }
+        }
+        &.vertical{
+            &.selected{
+                color: $blue;
+            }
         }
     }
-}
-    .g-sub-menu .g-menu-item{
-
+    a{
+        color:inherit;text-decoration:none;
+    }
+    .g-sub-menu .g-menu-item:not(.vertical){
         &.selected{
-            color: #000;
+            color: $color;
+            background: $gray;
         }
         &::after{
             display: none;

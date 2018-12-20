@@ -1,8 +1,8 @@
 <template>
-    <div class="g-sub-menu" :class="{active}"  v-click-out-side="close">
+    <div class="g-sub-menu" :class="{active,vertical}"  v-click-out-side="close">
         <span class="g-sub-menu-label" @click="onClick">
             <slot name="title"></slot>
-            <span class="g-sub-menu-icon" :class="{open}">
+            <span class="g-sub-menu-icon" :class="{open,vertical}">
                 <g-icon  name="right "></g-icon>
             </span>
         </span>
@@ -91,24 +91,22 @@
 
 <style scoped lang="scss">
     @import "var";
-    .x-enter-active, .x-leave-active{
-    }
-    .fade-enter, .fade-leave-to{
-
-    }
     .g-sub-menu{
         position: relative;
-        &.active{
-            position: relative;
-            &::after{
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                border-bottom: 2px solid $blue;
-                width: 100%;
+        &:not(.vertical){
+            &.active{
+                position: relative;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    border-bottom: 2px solid $blue;
+                    width: 100%;
+                }
             }
         }
+
         &-label{
             padding:8px 16px;
             display: block;
@@ -156,13 +154,15 @@
             justify-content: space-between;
         }
         .g-sub-menu-icon{
-            display: inline-flex;
-            transform: scale(.8);
-            fill: $light-color;
-            margin-left: 1em;
-            transition: transform 250ms;
+            display: inline-flex;transform: scale(.8);fill: $light-color;
+            margin-left: 1em;transition: transform 250ms;
+            &.vertical{
+                transform: rotate(90deg);
+                &.open{
+                    transform: rotate(270deg);
+                }
+            }
             &.open{
-
              transform: rotate(180deg);
             }
         }
