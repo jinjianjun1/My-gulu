@@ -12,8 +12,6 @@ describe('Slides.vue', () => {
         expect(Slides).to.be.exist
     });
     it('接受GuluSlidesItem,默认展示第一个 ', function (done) {
-
-
         Vue.component('GSlidesItem',SlidesItem);
         const wrapper  =mount(Slides,{
             propsData:{
@@ -32,11 +30,10 @@ describe('Slides.vue', () => {
                 `
             }
         });
-
         setTimeout(()=>{
             expect(wrapper.find('.box1').exists()).to.be.true
             done()
-        })
+        },1500)
     });
     it('selected是多少就展示选中的 ', function (done) {
 
