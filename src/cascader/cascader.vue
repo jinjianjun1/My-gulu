@@ -43,21 +43,13 @@
             }
         },
         methods:{
-            // onClickDocument(e){
-            //     let {cascader}=this.$refs;
-            //     let {target}=e;
-            //     if (cascader===target ||cascader.contains(target)){return}
-            //     this.close()
-            // },
+
             open(){
                 this.popoverVisible=true;
-                // this.$nextTick(()=>{
-                //     document.addEventListener('click',this.onClickDocument)
-                // })
+
             },
             close(){
                 this.popoverVisible=false;
-                // document.removeEventListener('click',this.onClickDocument)
 
             },
             toggle(){
@@ -80,7 +72,7 @@
                         if (item.children) {
                             hasChildren.push(item)
                         } else {
-                            noChildren.push(item)
+                            noChildren.push(item)//将有孩子和没孩子的分成两组
                         }
                     });
                     let found = simple(noChildren, id);
@@ -126,7 +118,7 @@
 </script>
 
 <style scoped lang="scss">
-@import "../var";
+@import "var";
 .cascader{
     position: relative;
     display: inline-block;

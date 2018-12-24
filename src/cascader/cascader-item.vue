@@ -80,7 +80,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../var";
+    @import "var";
 .cascader-item{
     display: flex;
     justify-content: flex-start;
