@@ -26,6 +26,7 @@ describe('Menu.vue', () => {
                 <template slot="title">关于</template>
                 <g-menu-item name="culture">企业文化</g-menu-item>
                 <g-menu-item name="team">开发团队</g-menu-item>
+                <g-sub-menu name="about">
 `
             }
         });
