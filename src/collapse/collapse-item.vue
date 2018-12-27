@@ -1,5 +1,5 @@
 <template>
-    <div class="collapseItem" @click="toogle">
+    <div class="collapseItem" @click="toggle">
         <div class="title">
             {{title}}
         </div>
@@ -35,7 +35,7 @@
             })
         },
         methods:{
-            toogle(){
+            toggle(){
                 if(this.open){
                     this.eventBus && this.eventBus.$emit('update:removeSelected',this.name)
                 }else{
