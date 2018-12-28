@@ -3,19 +3,27 @@
         <table class="j-table" :class="{bordered,compact,striped}">
             <thead>
                 <tr>
-                    <th><input type="checkbox" ></th>
+                    <th>
+                        <label>
+                            <input type="checkbox" @change="onChangeAllItems" ref="totalSelected">
+                        </label>
+                    </th>
                     <th v-if="numberVisible">#</th>
-                    <th v-for="column in columns">
+                    <th v-for="column in columns" :key="column.filed">
                         {{column.text}}
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item,index in dataSource">
-                    <th><input type="checkbox" ></th>
+                <tr v-for="item,index in dataSource" :key="item.id">
+                    <td>
+                        <label>
+                            <input type="checkbox"  :checked="ifItemSelected(item)" @change="onChangeItem(item,index,$event)">
+                        </label>
+                    </td>
                     <td v-if="numberVisible">{{index+1}}</td>
-                    <template v-for="column in columns">
-                        <td>{{item[column.filed]}}</td>
+                    <template v-for="column in columns" >
+                        <td :key="column.filed">{{item[column.filed]}}</td>
                     </template>
                 </tr>
             </tbody>
@@ -26,6 +34,37 @@
 <script>
     export default {
         name: "J-table",
+        methods: {
+            onChangeItem(item, index, e) {
+                let selected=e.target.checked;
+                let copy =JSON.parse(JSON.stringify(this.selectedItems));
+                if (selected){
+                    copy.push(item);
+                }else{
+                    copy=copy.filter(i=>i.id!==item.id)
+                }
+                this.$emit('update:selectedItems', copy)
+
+            },
+            onChangeAllItems(e) {
+                let selected=e.target.checked;
+                this.$emit('update:selectedItems',selected?this.dataSource:[])
+            },
+            ifItemSelected(item){
+                return this.selectedItems.filter(i=>i.id===item.id).length>0
+            }
+        },
+        watch:{
+            selectedItems(){
+                if (this.selectedItems.length===this.dataSource.length){
+                    this.$refs.totalSelected.indeterminate=false;
+                    this.$refs.totalSelected.checked=true
+
+                } else {
+                    this.$refs.totalSelected.indeterminate = this.selectedItems.length !== 0;
+                }
+            }
+        },
         props:{
             columns:{
                 type:Array,
@@ -33,7 +72,10 @@
             },
             dataSource:{
                 type:Array,
-                required:true
+                required:true,
+                validator(array){
+                    return !(array.filter(i => i.id === undefined).length > 0) ;
+                }
             },
             numberVisible:{
                 type:Boolean,
@@ -50,6 +92,10 @@
             striped:{
                 type:Boolean,
                 default:true
+            },
+            selectedItems:{
+                type:Array,
+                default:()=>[],
             }
         }
     }
