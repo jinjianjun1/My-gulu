@@ -10,7 +10,14 @@
                 </th>
                 <th v-if="numberVisible">#</th>
                 <th v-for="column in columns" :key="column.filed">
-                    {{column.text}}
+                    <div class="j-table-header">
+                        {{column.text}}
+                        <span class="j-table-sorter" v-if="column.filed in orderBy" @click="changeOlderBy(column.filed)">
+                        <g-icon name="asc" :class="{active:orderBy[column.filed]==='asc'}"></g-icon>
+                        <g-icon name="desc" :class="{active:orderBy[column.filed]==='desc'}"></g-icon>
+                        </span>
+
+                    </div>
                 </th>
             </tr>
             </thead>
@@ -28,13 +35,32 @@
             </tr>
             </tbody>
         </table>
+        <div class="j-table-loading" v-if="loading">
+            <g-icon name="loading"/>
+        </div>
     </div>
 </template>
 
 <script>
+    import GIcon from './icon'
     export default {
         name: "J-table",
+        components:{
+            GIcon
+        },
         methods: {
+            changeOlderBy(key){
+                let copy= JSON.parse(JSON.stringify(this.orderBy));
+                let oldValue=copy[key];
+                if (oldValue==='asc'){
+                    copy[key]='desc'
+                }else if (oldValue==='desc'){
+                    copy[key]=true
+                }else {
+                    copy[key]='asc'
+                }
+                this.$emit('update:orderBy',copy)
+            },
             onChangeItem(item, index, e) {
                 let selected=e.target.checked;
                 let copy =JSON.parse(JSON.stringify(this.selectedItems));
@@ -80,6 +106,10 @@
             }
         },
         props:{
+            loading:{
+                type:Boolean,
+                default:false
+            },
             columns:{
                 type:Array,
                 required:true
@@ -110,6 +140,10 @@
             selectedItems:{
                 type:Array,
                 default:()=>[],
+            },
+            orderBy:{
+                type:Object,
+                default:()=>({})
             }
         }
     }
@@ -153,6 +187,51 @@
                 }
             }
         }
+        &-header{
+            display: flex;
+            align-items: center;
+        }
+        &-sorter{
+            display: inline-flex;
+            flex-direction: column;
+            margin: 0 4px;
+            svg{
+                width: 8px;
+                height: 8px;
+                fill: $dark-gray;
+                cursor: pointer;
+                &.active{
+                    fill:red;
+                }
+                &:first-child{
+                    position: relative;
+                    top: -1px;
+                }
+                &:last-child{
+                    position: relative;
+                    top: 1px;
+                }
+            }
+        }
+    &-wrapper{
+        position: relative;
 
+    }
+    &-loading{
+        background: rgba(255,255,255,.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg{
+            @include spin;
+            width: 50px;
+            height: 50px;
+        }
+    }
     }
 </style>
