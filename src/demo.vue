@@ -10,7 +10,8 @@
          <!--<j-table  :select-items.sync="selected" :columns="columns" :striped="false" compact bordered :data-source="dataSource">-->
          <!--</j-table>-->
      <!--</div>-->
-
+     <!--{{selected}}-->
+        <!--<j-table2 :dataSource="dataSource" :columns="columns" :selected.sync="selected"></j-table2>-->
      <g-pager :current-page.sync="currentPage" :total-page="10" ></g-pager>
  </div>
 </template>

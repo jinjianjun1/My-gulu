@@ -2,30 +2,30 @@
     <div class="j-table-wrapper" >
         <table class="j-table" :class="{bordered,compact,striped}">
             <thead>
-                <tr>
-                    <th>
-                        <label>
-                            <input type="checkbox" @change="onChangeAllItems" ref="totalSelected">
-                        </label>
-                    </th>
-                    <th v-if="numberVisible">#</th>
-                    <th v-for="column in columns" :key="column.filed">
-                        {{column.text}}
-                    </th>
-                </tr>
+            <tr>
+                <th>
+                    <label>
+                        <input type="checkbox" @change="onChangeAllItems" ref="totalSelected" :checked="areAllSelected">
+                    </label>
+                </th>
+                <th v-if="numberVisible">#</th>
+                <th v-for="column in columns" :key="column.filed">
+                    {{column.text}}
+                </th>
+            </tr>
             </thead>
             <tbody>
-                <tr v-for="item,index in dataSource" :key="item.id">
-                    <td>
-                        <label>
-                            <input type="checkbox"  :checked="ifItemSelected(item)" @change="onChangeItem(item,index,$event)">
-                        </label>
-                    </td>
-                    <td v-if="numberVisible">{{index+1}}</td>
-                    <template v-for="column in columns" >
-                        <td :key="column.filed">{{item[column.filed]}}</td>
-                    </template>
-                </tr>
+            <tr v-for="item,index in dataSource" :key="item.id">
+                <td>
+                    <label>
+                        <input type="checkbox"  :checked="ifItemSelected(item)" @change="onChangeItem(item,index,$event)">
+                    </label>
+                </td>
+                <td v-if="numberVisible">{{index+1}}</td>
+                <template v-for="column in columns" >
+                    <td :key="column.filed">{{item[column.filed]}}</td>
+                </template>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -54,11 +54,25 @@
                 return this.selectedItems.filter(i=>i.id===item.id).length>0
             }
         },
+        computed:{
+            areAllSelected(){
+                const a=this.dataSource.map(item=>item.id).sort();
+                const b=this.selectedItems.map(item=>item.id).sort();
+                let equal=true;
+                if (a.length !== b.length) {return false}
+                for (let i = 0; i < a.length; i++) {
+                    if (a[i] !== b[i]) {
+                        equal = false;
+                        break
+                    }
+                }
+                return equal
+            }
+        },
         watch:{
             selectedItems(){
                 if (this.selectedItems.length===this.dataSource.length){
                     this.$refs.totalSelected.indeterminate=false;
-                    this.$refs.totalSelected.checked=true
 
                 } else {
                     this.$refs.totalSelected.indeterminate = this.selectedItems.length !== 0;
@@ -105,40 +119,40 @@
     @import "var";
     $dark-gray:darken($gray,20%);
     $light-gray:lighten($dark-gray,22%);
-.j-table{
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-bottom: 1px solid red;
-    &.bordered{
-        border: 1px solid $gray;
-        td,th{
-            border: 1px solid $dark-gray;
+    .j-table{
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-bottom: 1px solid red;
+        &.bordered{
+            border: 1px solid $gray;
+            td,th{
+                border: 1px solid $dark-gray;
+            }
         }
-    }
-    &.compact{
-        td,th{
-            padding: 4px;
+        &.compact{
+            td,th{
+                padding: 4px;
+            }
         }
-    }
 
-    td,th{
-        border-bottom: 1px solid $dark-gray;
-        text-align:left;
-        padding: 8px;
-    }
-    &.striped{
-        tbody{
-            >tr{
-                &:nth-child(odd){
-                    background: $light-gray;
-                }
-                &:nth-child(even){
-                    background: white;
+        td,th{
+            border-bottom: 1px solid $dark-gray;
+            text-align:left;
+            padding: 8px;
+        }
+        &.striped{
+            tbody{
+                >tr{
+                    &:nth-child(odd){
+                        background: $light-gray;
+                    }
+                    &:nth-child(even){
+                        background: white;
+                    }
                 }
             }
         }
-    }
 
-}
+    }
 </style>
