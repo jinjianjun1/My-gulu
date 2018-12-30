@@ -4,20 +4,21 @@
                 <table ref="table" class="j-table" :class="{bordered,compact,striped}">
                     <thead>
                     <tr>
-                        <th :style="{width:'50px'}">
+                        <th :style="{width:'50px'}" class="j-table-center"></th>
+                        <th :style="{width:'50px'}" class="j-table-center">
                             <label>
                                 <input type="checkbox" @change="onChangeAllItems" ref="totalSelected"
                                        :checked="areAllSelected">
                             </label>
                         </th>
                         <th :style="{width:'50px'}" v-if="numberVisible">#</th>
-                        <th :style="{width:column.width+'px'}" v-for="column in columns" :key="column.filed">
+                        <th :style="{width:column.width+'px'}" v-for="column in columns" :key="column.field">
                             <div class="j-table-header">
                                 {{column.text}}
-                                <span class="j-table-sorter" v-if="column.filed in orderBy"
-                                      @click="changeOlderBy(column.filed)">
-                        <g-icon name="asc" :class="{active:orderBy[column.filed]==='asc'}"></g-icon>
-                        <g-icon name="desc" :class="{active:orderBy[column.filed]==='desc'}"></g-icon>
+                                <span class="j-table-sorter" v-if="column.field in orderBy"
+                                      @click="changeOlderBy(column.field)">
+                        <g-icon name="asc" :class="{active:orderBy[column.field]==='asc'}"></g-icon>
+                        <g-icon name="desc" :class="{active:orderBy[column.field]==='desc'}"></g-icon>
                         </span>
 
                             </div>
@@ -25,18 +26,29 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="item,index in dataSource" :key="item.id">
-                        <td :style="{width:'50px'}">
-                            <label>
-                                <input type="checkbox" :checked="ifItemSelected(item)"
-                                       @change="onChangeItem(item,index,$event)">
-                            </label>
-                        </td>
-                        <td :style="{width:'50px'}" v-if="numberVisible">{{index+1}}</td>
-                        <template v-for="column in columns">
-                            <td :style="{width:column.width+'px'}" :key="column.filed">{{item[column.filed]}}</td>
-                        </template>
-                    </tr>
+                    <template v-for="item,index in dataSource" >
+                        <tr :key="item.id">
+                            <td :style="{width:'50px'}" class="j-table-center">
+                                <g-icon @click="expendItems(item.id)" class="j-table-expendIcon" name="right"/>
+                            </td>
+                            <td :style="{width:'50px'}" class="j-table-center">
+                                <label>
+                                    <input type="checkbox" :checked="ifItemSelected(item)"
+                                           @change="onChangeItem(item,index,$event)">
+                                </label>
+                            </td>
+                            <td :style="{width:'50px'}" v-if="numberVisible">{{index+1}}</td>
+                            <template v-for="column in columns">
+                                <td :style="{width:column.width+'px'}" :key="column.field">{{item[column.field]}}</td>
+                            </template>
+                        </tr>
+                            <tr v-if="inExpendedIds(item.id)" :key="`${item.id}-expend`">
+                            <td :colspan="columns.length+2">
+                                {{item[expendField] || '无详细描述'}}
+                            </td>
+                        </tr>
+
+                    </template>
                     </tbody>
                 </table>
             </div>
@@ -56,6 +68,17 @@
             GIcon
         },
         methods: {
+            inExpendedIds(id){
+                console.log(this.expendIds.indexOf(id));
+                return this.expendIds.indexOf(id)>=0
+            },
+            expendItems(id){
+                if (this.inExpendedIds(id)){
+                    this.expendIds.splice(this.expendIds.indexOf(id),1)
+                }else{
+                    this.expendIds.push(id)
+                }
+            },
             changeOlderBy(key){
                 let copy= JSON.parse(JSON.stringify(this.orderBy));
                 let oldValue=copy[key];
@@ -127,7 +150,15 @@
                 }
             }
         },
+        data(){
+            return{
+                expendIds:[]
+            }
+        },
         props:{
+            expendField:{
+                type:String
+            },
             height: {
                 type: Number,
             },
@@ -259,13 +290,19 @@
         }
     }
 
-        &-copy {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: red;
-        }
-
+    &-copy {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: red;
+    }
+    &-expendIcon{
+        width: 10px;
+        height: 10px;
+    }
+    & &-center{
+        text-align: center;
+    }
     }
 </style>

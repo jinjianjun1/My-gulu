@@ -3,8 +3,9 @@
      <div>
          {{selected}}
 
-         <j-table :height="400"  :loading="loading" :selected-items.sync="selected" :columns="columns" bordered
-                   :order-by.sync="orderBy" :data-source="dataSource" @update:orderBy="x">
+         <j-table :selected-items.sync="selected" :columns="columns"
+                 :height="400"  :loading="loading"  bordered :order-by.sync="orderBy"
+                  :data-source="dataSource" @update:orderBy="x" expend-field="description">
          </j-table>
      </div>
      <!--<div>-->
@@ -40,8 +41,8 @@
                 selected:[],
                 orderBy:{name:true,score:'desc'},//true 为开启排序 但不表明是升序和降序
                 dataSource: [
-                    {id: 1, name: 'jason', score: 101},
-                    {id: 2, name: 'frank', score: 180},
+                    {id: 1, name: 'jason', score: 101,description:'111'},
+                    {id: 2, name: 'frank', score: 180,description:'222'},
                     {id: 3, name: 'frank', score: 180},
                     {id: 4, name: 'frank', score: 180},
                     {id: 5, name: 'frank', score: 180},
@@ -61,7 +62,7 @@
                     {id: 19, name: 'frank', score: 180},
                     {id: 20, name: 'frank', score: 180},
                 ],
-                columns:[{text:'姓名',filed:'name',width:200},{text:'分数',filed:'score'}]
+                columns:[{text:'姓名',field:'name',width:200},{text:'分数',field:'score'}]
             }
         }
 
