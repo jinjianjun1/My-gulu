@@ -4,8 +4,8 @@
                 <table ref="table" class="j-table" :class="{bordered,compact,striped}">
                     <thead>
                     <tr>
-                        <th :style="{width:'50px'}" class="j-table-center"></th>
-                        <th :style="{width:'50px'}" class="j-table-center">
+                        <th v-if="expendField" :style="{width:'50px'}" class="j-table-center"></th>
+                        <th v-if="checkAble" :style="{width:'50px'}" class="j-table-center">
                             <label>
                                 <input type="checkbox" @change="onChangeAllItems" ref="totalSelected"
                                        :checked="areAllSelected">
@@ -28,10 +28,10 @@
                     <tbody>
                     <template v-for="item,index in dataSource" >
                         <tr :key="item.id">
-                            <td :style="{width:'50px'}" class="j-table-center">
+                            <td v-if="expendField" :style="{width:'50px'}" class="j-table-center">
                                 <g-icon @click="expendItems(item.id)" class="j-table-expendIcon" name="right"/>
                             </td>
-                            <td :style="{width:'50px'}" class="j-table-center">
+                            <td v-if="checkAble" :style="{width:'50px'}" class="j-table-center">
                                 <label>
                                     <input type="checkbox" :checked="ifItemSelected(item)"
                                            @change="onChangeItem(item,index,$event)">
@@ -43,7 +43,7 @@
                             </template>
                         </tr>
                             <tr v-if="inExpendedIds(item.id)" :key="`${item.id}-expend`">
-                            <td :colspan="columns.length+2">
+                            <td :colspan="columns.length+expendCellColSpan">
                                 {{item[expendField] || '无详细描述'}}
                             </td>
                         </tr>
@@ -69,7 +69,6 @@
         },
         methods: {
             inExpendedIds(id){
-                console.log(this.expendIds.indexOf(id));
                 return this.expendIds.indexOf(id)>=0
             },
             expendItems(id){
@@ -111,6 +110,12 @@
             },
         },
         computed:{
+            expendCellColSpan(){
+                let result=0;
+                if (this.checkAble){result+=1}
+                if (this.expendField){result+=1}
+                return result
+            },
             areAllSelected(){
                 const a=this.dataSource.map(item=>item.id).sort();
                 const b=this.selectedItems.map(item=>item.id).sort();
@@ -156,6 +161,10 @@
             }
         },
         props:{
+            checkAble:{
+                type:Boolean,
+                default:false
+            },
             expendField:{
                 type:String
             },

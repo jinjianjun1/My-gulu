@@ -3,15 +3,15 @@
      <div>
          {{selected}}
 
-         <j-table :selected-items.sync="selected" :columns="columns"
+         <j-table :selected-items.sync="selected" :columns="columns" checkAble
                  :height="400"  :loading="loading"  bordered :order-by.sync="orderBy"
                   :data-source="dataSource" @update:orderBy="x" expend-field="description">
          </j-table>
      </div>
-     <!--<div>-->
-         <!--<j-table  :select-items.sync="selected" :columns="columns" :striped="false" compact bordered :data-source="dataSource">-->
-         <!--</j-table>-->
-     <!--</div>-->
+     <div>
+         <j-table  :select-items.sync="selected" :columns="columns" :striped="false" compact bordered :data-source="dataSource">
+         </j-table>
+     </div>
      <!--{{selected}}-->
         <!--<j-table2 :dataSource="dataSource" :columns="columns" :selected.sync="selected"></j-table2>-->
      <g-pager :current-page.sync="currentPage" :total-page="10" ></g-pager>
