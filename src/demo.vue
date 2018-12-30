@@ -3,7 +3,7 @@
      <div>
          {{selected}}
 
-         <j-table  :loading="loading" :selected-items.sync="selected" :columns="columns" bordered
+         <j-table :height="400"  :loading="loading" :selected-items.sync="selected" :columns="columns" bordered
                    :order-by.sync="orderBy" :data-source="dataSource" @update:orderBy="x">
          </j-table>
      </div>
@@ -26,7 +26,7 @@
         components:{GPager,JTable},
         methods:{
             x(){
-                this.loading=true
+                this.loading = true;
                 this.dataSource=this.dataSource.sort((a,b)=>a.score-b.score)
                 setTimeout(()=>{
                     this.loading=false
@@ -41,14 +41,27 @@
                 orderBy:{name:true,score:'desc'},//true 为开启排序 但不表明是升序和降序
                 dataSource: [
                     {id: 1, name: 'jason', score: 101},
-                    {id: 2, name: 'frank', score: 180}, {id: 8, name: 'jason', score: 101},
-                    {id: 3, name: 'frank', score: 180}, {id: 9, name: 'jason', score: 101},
-                    {id: 4, name: 'frank', score: 180}, {id: 10, name: 'jason', score: 101},
-                    {id: 5, name: 'frank', score: 180}, {id: 11, name: 'jason', score: 101},
-                    {id: 6, name: 'frank', score: 180}, {id: 12, name: 'jason', score: 101},
+                    {id: 2, name: 'frank', score: 180},
+                    {id: 3, name: 'frank', score: 180},
+                    {id: 4, name: 'frank', score: 180},
+                    {id: 5, name: 'frank', score: 180},
+                    {id: 6, name: 'frank', score: 180},
                     {id: 7, name: 'frank', score: 180},
+                    {id: 8, name: 'jason', score: 101},
+                    {id: 9, name: 'jason', score: 101},
+                    {id: 10, name: 'jason', score: 101},
+                    {id: 11, name: 'jason', score: 101},
+                    {id: 12, name: 'frank', score: 180},
+                    {id: 13, name: 'frank', score: 180},
+                    {id: 14, name: 'frank', score: 180},
+                    {id: 15, name: 'frank', score: 180},
+                    {id: 16, name: 'frank', score: 180},
+                    {id: 17, name: 'frank', score: 180},
+                    {id: 18, name: 'frank', score: 180},
+                    {id: 19, name: 'frank', score: 180},
+                    {id: 20, name: 'frank', score: 180},
                 ],
-                columns:[{text:'姓名',filed:'name'},{text:'分数',filed:'score'}]
+                columns:[{text:'姓名',filed:'name',width:200},{text:'分数',filed:'score'}]
             }
         }
 
@@ -57,5 +70,7 @@
 
 <style scoped>
     *{margin: 0;padding:0;box-sizing: border-box}
-
+.xxx{
+    height: 400px;
+}
 </style>

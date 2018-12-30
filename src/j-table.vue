@@ -1,48 +1,55 @@
 <template>
-    <div class="j-table-wrapper" >
-        <table class="j-table" :class="{bordered,compact,striped}">
-            <thead>
-            <tr>
-                <th>
-                    <label>
-                        <input type="checkbox" @change="onChangeAllItems" ref="totalSelected" :checked="areAllSelected">
-                    </label>
-                </th>
-                <th v-if="numberVisible">#</th>
-                <th v-for="column in columns" :key="column.filed">
-                    <div class="j-table-header">
-                        {{column.text}}
-                        <span class="j-table-sorter" v-if="column.filed in orderBy" @click="changeOlderBy(column.filed)">
+        <div ref="wrapper" class="j-table-wrapper">
+            <div ref="tableWrapper" :style="{height:height+'px',overflow:'auto'}">
+                <table ref="table" class="j-table" :class="{bordered,compact,striped}">
+                    <thead>
+                    <tr>
+                        <th :style="{width:'50px'}">
+                            <label>
+                                <input type="checkbox" @change="onChangeAllItems" ref="totalSelected"
+                                       :checked="areAllSelected">
+                            </label>
+                        </th>
+                        <th :style="{width:'50px'}" v-if="numberVisible">#</th>
+                        <th :style="{width:column.width+'px'}" v-for="column in columns" :key="column.filed">
+                            <div class="j-table-header">
+                                {{column.text}}
+                                <span class="j-table-sorter" v-if="column.filed in orderBy"
+                                      @click="changeOlderBy(column.filed)">
                         <g-icon name="asc" :class="{active:orderBy[column.filed]==='asc'}"></g-icon>
                         <g-icon name="desc" :class="{active:orderBy[column.filed]==='desc'}"></g-icon>
                         </span>
 
-                    </div>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="item,index in dataSource" :key="item.id">
-                <td>
-                    <label>
-                        <input type="checkbox"  :checked="ifItemSelected(item)" @change="onChangeItem(item,index,$event)">
-                    </label>
-                </td>
-                <td v-if="numberVisible">{{index+1}}</td>
-                <template v-for="column in columns" >
-                    <td :key="column.filed">{{item[column.filed]}}</td>
-                </template>
-            </tr>
-            </tbody>
-        </table>
-        <div class="j-table-loading" v-if="loading">
-            <g-icon name="loading"/>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="item,index in dataSource" :key="item.id">
+                        <td :style="{width:'50px'}">
+                            <label>
+                                <input type="checkbox" :checked="ifItemSelected(item)"
+                                       @change="onChangeItem(item,index,$event)">
+                            </label>
+                        </td>
+                        <td :style="{width:'50px'}" v-if="numberVisible">{{index+1}}</td>
+                        <template v-for="column in columns">
+                            <td :style="{width:column.width+'px'}" :key="column.filed">{{item[column.filed]}}</td>
+                        </template>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="j-table-loading" v-if="loading">
+                <g-icon name="loading"/>
+            </div>
         </div>
-    </div>
+
 </template>
 
 <script>
     import GIcon from './icon'
+
     export default {
         name: "J-table",
         components:{
@@ -78,7 +85,7 @@
             },
             ifItemSelected(item){
                 return this.selectedItems.filter(i=>i.id===item.id).length>0
-            }
+            },
         },
         computed:{
             areAllSelected(){
@@ -95,6 +102,21 @@
                 return equal
             }
         },
+        mounted() {
+            let table2 = this.$refs.table.cloneNode(false);
+            this.table2=table2;
+            table2.classList.add('j-table-copy');
+            let thead=this.$refs.table.children[0];
+            let {height}=thead.getBoundingClientRect();
+            this.$refs.tableWrapper.style.marginTop=height+'px';
+            this.$refs.tableWrapper.style.height=this.height-height+'px';
+            table2.appendChild(thead);
+             this.$refs.wrapper.appendChild(table2);
+
+        },
+        beforeDestroy(){
+            this.table2.remove();
+        },
         watch:{
             selectedItems(){
                 if (this.selectedItems.length===this.dataSource.length){
@@ -106,6 +128,9 @@
             }
         },
         props:{
+            height: {
+                type: Number,
+            },
             loading:{
                 type:Boolean,
                 default:false
@@ -215,7 +240,7 @@
         }
     &-wrapper{
         position: relative;
-
+        overflow: auto;
     }
     &-loading{
         background: rgba(255,255,255,.7);
@@ -233,5 +258,14 @@
             height: 50px;
         }
     }
+
+        &-copy {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: red;
+        }
+
     }
 </style>
