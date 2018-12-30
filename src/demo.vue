@@ -6,6 +6,10 @@
          <j-table :selected-items.sync="selected" :columns="columns" checkAble
                  :height="400"  :loading="loading"  bordered :order-by.sync="orderBy"
                   :data-source="dataSource" @update:orderBy="x" expend-field="description">
+             <template slot-scope="item">
+                 <button @click="edit(item.item)">编辑</button>
+                 <button @click="view(item.item)">查看</button>
+             </template>
          </j-table>
      </div>
      <div>
@@ -26,6 +30,8 @@
         name: 'demo',
         components:{GPager,JTable},
         methods:{
+            edit(item){alert(`编辑${item.id}`)},
+            view(item){alert(`查看${item.id}`)},
             x(){
                 this.loading = true;
                 this.dataSource=this.dataSource.sort((a,b)=>a.score-b.score)

@@ -23,6 +23,7 @@
 
                             </div>
                         </th>
+                        <th ref="actionsHeader" v-if="$scopedSlots.default"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,12 @@
                             <template v-for="column in columns">
                                 <td :style="{width:column.width+'px'}" :key="column.field">{{item[column.field]}}</td>
                             </template>
+                            <td v-if="$scopedSlots.default">
+                                <div ref="actions" style="display: inline-block">
+                                    <slot :item="item"></slot>
+
+                                </div>
+                            </td>
                         </tr>
                             <tr v-if="inExpendedIds(item.id)" :key="`${item.id}-expend`">
                             <td :colspan="columns.length+expendCellColSpan">
@@ -131,6 +138,24 @@
             }
         },
         mounted() {
+            if(this.$scopedSlots.default){
+                let div=this.$refs.actions[0];
+                let {width}=div.getBoundingClientRect();
+                let parent=div.parentNode;
+                let styles=getComputedStyle(parent);
+                let paddingLeft=styles.getPropertyValue('padding-left');
+                let paddingRight=styles.getPropertyValue('padding-right');
+                let borderLeft=styles.getPropertyValue('border-left-width');
+                let borderRight=styles.getPropertyValue('border-right-width');
+                console.log(paddingLeft, paddingRight, borderLeft, borderRight);
+                let width2=width+
+                    parseInt(paddingLeft)+parseInt(paddingRight)+parseInt(borderLeft)+parseInt(borderRight)+'px'
+                this.$refs.actionsHeader.style.width=parseInt(width2)+16+'px';
+                this.$refs.actions.map(div=>{
+                    div.parentNode.style.width=width2
+                })
+            }
+
             let table2 = this.$refs.table.cloneNode(false);
             this.table2=table2;
             table2.classList.add('j-table-copy');
