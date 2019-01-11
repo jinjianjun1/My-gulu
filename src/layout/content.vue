@@ -12,7 +12,7 @@ export default {
 
 <style scoped lang="scss">
     .content{
-        flex: 1;
+        flex-grow: 1;
     }
 
 </style>
