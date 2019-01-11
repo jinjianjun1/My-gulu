@@ -1,5 +1,5 @@
 <template>
-    <div class="g-button-group" >
+    <div class="j-button-group" >
         <slot></slot>
     </div>
 </template>
@@ -10,16 +10,16 @@
             for (let node of this.$el.children){
               let name= node.nodeName.toLowerCase();
                 if(name!=='button'){
-                    console.warn(`g-button-group中只可以添加g-button,但是你写的是${name}`)
+                    console.warn(`j-button-group中只可以添加j-button,但是你写的是${name}`)
                 }
             }
         }
     }
 </script>
 <style lang="scss" scoped>
-    .g-button-group{
+    .j-button-group{
         display: inline-flex;vertical-align: middle;
-        >.g-button{
+        >.j-button{
             border-radius: 0;
             &:not(:first-child){margin-left: -1px;}
             &:first-child{

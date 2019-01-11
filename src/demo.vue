@@ -18,17 +18,21 @@
      </div>
      <!--{{selected}}-->
         <!--<j-table2 :dataSource="dataSource" :columns="columns" :selected.sync="selected"></j-table2>-->
-     <g-pager :current-page.sync="currentPage" :total-page="10" ></g-pager>
+     <j-pager :current-page.sync="currentPage" :total-page="10" ></j-pager>
+     <j-button>默认样式</j-button> <j-button icon="settings">设置</j-button>
+     <j-button disabled>disabled</j-button>
+     <j-button icon="delate" iconPosition="right">删除</j-button>
+     <j-button loading>loading</j-button>
  </div>
 </template>
 
 <script>
     import GPager from './pager'
     import JTable from './j-table'
-
+    import JButton from './button/button'
     export default {
         name: 'demo',
-        components:{GPager,JTable},
+        components:{GPager,JTable,JButton},
         methods:{
             edit(item){alert(`编辑${item.id}`)},
             view(item){alert(`查看${item.id}`)},

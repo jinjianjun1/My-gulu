@@ -1,20 +1,23 @@
 {
-  "name": "clujun1-1",
-  "version": "0.1.0",
+  "name": "j-vue-ui",
+  "version": "1.0.5",
   "description": "UI框架",
-  "private": true,
+  "main": "dist/j-ue.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test": "karma start --single-run",
     "test:unit": "karma start",
-    "test:unit:old": "vue-cli-service test:unit"
+    "test:unit:old": "vue-cli-service test:unit",
+    "package-go": "vue-cli-service build --target lib --name j-ue src/index.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
-    "sinon-chai": "^3.3.0",
     "vue": "^2.5.17"
   },
   "devDependencies": {
+    "vue-server-renderer":"2.5.17",
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-unit-mocha": "^3.2.0",
     "@vue/cli-service": "^3.2.0",
@@ -30,7 +33,9 @@
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "sinon": "^7.2.2",
-    "vue-template-compiler": "^2.5.17"
+    "sinon-chai": "^3.3.0",
+    "vue-template-compiler": "^2.5.17",
+    "vuepress": "^0.14.8"
   },
   "postcss": {
     "plugins": {

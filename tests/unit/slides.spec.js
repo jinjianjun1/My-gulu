@@ -33,7 +33,7 @@ describe('Slides.vue', () => {
         setTimeout(()=>{
             expect(wrapper.find('.box1').exists()).to.be.true
             done()
-        },1500)
+        },1000)
     });
     it('selected是多少就展示选中的 ', function (done) {
 

@@ -28,7 +28,7 @@
 </script>
 
 <style  lang="scss" scoped>
-    @import "var";
+    @import "../../styles/var";
 
     .g-button {
         font-size: $font-size;
