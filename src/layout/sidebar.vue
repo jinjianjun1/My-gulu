@@ -25,7 +25,7 @@ export default {
     }
 }
 .slide-enter-active, .slide-leave-active{
-    transition: all 2.5s;
+    transition: all .5s;
 }
 .slide-enter, .slide-leave-to{
     margin-left: -200px;

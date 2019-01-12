@@ -25,11 +25,9 @@
         data () {
             return {
                 selected: '1',
-                content: `
-          <j-input></j-input>
-          <j-input value="normal"></j-input>
-          <j-input value="disabled" disabled></j-input>
-          <j-input value="readonly" readonly></j-input>
+                content: `<j-input value="normal"></j-input>
+<j-input value="disabled" disabled></j-input>
+<j-input value="readonly" readonly></j-input>
       `.replace(/^ {8}/gm, '').trim()
             }
         }

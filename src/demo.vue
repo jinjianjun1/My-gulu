@@ -15,6 +15,7 @@
      <div>
          <j-table  :select-items.sync="selected" :columns="columns" :striped="false" compact bordered :data-source="dataSource">
          </j-table>
+
      </div>
      <!--{{selected}}-->
         <!--<j-table2 :dataSource="dataSource" :columns="columns" :selected.sync="selected"></j-table2>-->
@@ -23,17 +24,39 @@
      <j-button disabled>disabled</j-button>
      <j-button icon="delate" iconPosition="right">删除</j-button>
      <j-button loading>loading</j-button>
+     <j-button @click="$toast('点击弹出提示')">上方弹出</j-button>
+     <j-button @click="$toast('点击弹出提示', {position:'middle'})">中间弹出</j-button>
+     <j-button @click="$toast('点击弹出提示', {position:'bottom'})">下方弹出</j-button>
+     <j-button @click="onClickButton">上方弹出</j-button>
+
  </div>
 </template>
 
 <script>
-    import GPager from './pager'
+    import Vue from 'vue'
+    import JPager from './pager'
     import JTable from './j-table'
     import JButton from './button/button'
+    import JLayout from './layout/layout'
+    import JHeader from './layout/header'
+    import JFooter from './layout/footer'
+    import JContent from './layout/content'
+    import JSidebar from './layout/sidebar'
+    import plugin from './plugin'
+    Vue.use(plugin);
     export default {
         name: 'demo',
-        components:{GPager,JTable,JButton},
-        methods:{
+        components:{plugin,JPager,JTable,JButton,JLayout,JHeader,JFooter,JContent,JSidebar},
+        methods:{onClickButton () {
+                this.$toast('你知道我在等你吗？', {
+                    closeButton: {
+                        text: '知道了',
+                        callback: () => {
+                            console.log('他说知道了')
+                        }
+                    }
+                })
+            },
             edit(item){alert(`编辑${item.id}`)},
             view(item){alert(`查看${item.id}`)},
             x(){

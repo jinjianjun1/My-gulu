@@ -24,9 +24,9 @@
             return {
                 value: '神秘代码',
                 content: `
-          data:{value: '神秘代码'}
-          <j-input v-model="value"></j-input>
-          <div>value: {{value}}</div>
+data:{value: '神秘代码'}
+<j-input v-model="value"></j-input>
+<div>value: {{value}}</div>
       `.replace(/^ {8}/gm, '').trim()
             }
         }

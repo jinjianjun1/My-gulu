@@ -4,7 +4,7 @@
     <p>
       <strong>预览</strong>
     </p>
-
+    <p>发现预览出来有错误，实际使用ok的 哈哈</p>
     <j-layout style="color: white; margin-bottom:50px;">
       <j-header style="height: 50px; background:lightskyblue;">
         header
