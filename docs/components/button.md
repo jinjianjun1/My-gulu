@@ -1,7 +1,7 @@
 ---
 title:Button
 ---
-# 按钮
+# Button
 <ClientOnly>
 <button-demo></button-demo>
 <button-demo1></button-demo1>

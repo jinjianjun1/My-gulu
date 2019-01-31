@@ -6,9 +6,9 @@
     </p>
 
     <div>
-      <j-button @click="$toast('点击弹出提示')">上方弹出</j-button>
-      <j-button @click="$toast('点击弹出提示', {position:'middle'})">中间弹出</j-button>
-      <j-button @click="$toast('点击弹出提示', {position:'bottom'})">下方弹出</j-button>
+      <j-button @click="$toast('来自上方大佬的俯视')">上方弹出</j-button>
+      <j-button @click="$toast('来自基友的一般视？', {position:'middle'})">中间弹出</j-button>
+      <j-button @click="$toast('来自底部小白的仰视', {position:'bottom'})">下方弹出</j-button>
     </div>
 
     <p>
@@ -17,37 +17,28 @@
     <pre><code>{{content}}</code></pre>
   </div>
 </template>
-<style>
-  .gulu-toast {
-    z-index: 30 !important;
-  }
-</style>
+
 <style scoped>
   * {
     box-sizing: border-box;
+    margin: 0;padding: 0;
   }
 
 </style>
 <script>
-  import plugin from '../../../src/plugin'
+  import JPlugin from '../../../src/plugin'
   import JButton from '../../../src/button/button'
   import Vue from 'vue'
 
-  Vue.use(plugin);
+  Vue.use(JPlugin);
 
   export default {
     components: {JButton},
     data () {
-      return {
-        content: `
-          <style>
-            .gulu-toast {
-              z-index: 30;
-            }
-          </style>
-          <j-button @click="$toast('点击弹出提示')">上方弹出</j-button>
-          <j-button @click="$toast('点击弹出提示', {position:'middle'})">中间弹出</j-button>
-          <j-button @click="$toast('点击弹出提示', {position:'bottom'})">下方弹出</j-button>
+      return {content:`
+          <j-button @click="$toast('来自大佬的俯视',{position:'top'}) ">上方弹出</j-button>
+          <j-button @click="$toast('来自基友的一般视', {position:'middle'})">中间弹出</j-button>
+          <j-button @click="$toast('来自小白的仰视', {position:'bottom'})">下方弹出</j-button>
       `.replace(/^ {8}/gm, '').trim()
       }
     }

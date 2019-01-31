@@ -58,7 +58,11 @@
         methods: {
             updateStyle() {
                 this.$nextTick(() => {//因为mounted的时候还没有高
-                    this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
+                    if(this.$refs.line){
+                        this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
+                    }else{
+                        alert(1)
+                    }
                 });
             },
             execAutoClose() {
@@ -103,17 +107,15 @@ $animation-duration: .8s;
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 999999;
 
     &.position-top {
         top: 0;
-
         .toast {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            animation: slide-down $animation-duration;
-        }
-    }
-
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            animation: slide-down $animation-duration
+        }}
     &.position-bottom {
         bottom: 0;
         .toast {

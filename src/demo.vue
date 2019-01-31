@@ -19,10 +19,6 @@
      </div>
      <!--{{selected}}-->
         <!--<j-table2 :dataSource="dataSource" :columns="columns" :selected.sync="selected"></j-table2>-->
-     <j-pager :current-page.sync="currentPage" :total-page="10" ></j-pager>
-     <j-button>默认样式</j-button> <j-button icon="settings">设置</j-button>
-     <j-button disabled>disabled</j-button>
-     <j-button icon="delate" iconPosition="right">删除</j-button>
      <j-button loading>loading</j-button>
      <j-button @click="$toast('点击弹出提示')">上方弹出</j-button>
      <j-button @click="$toast('点击弹出提示', {position:'middle'})">中间弹出</j-button>
