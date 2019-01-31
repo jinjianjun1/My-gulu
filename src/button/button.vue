@@ -1,8 +1,8 @@
 <template>
-    <button  class="g-button" :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')">
-        <g-icon class="icon" v-if="icon&&!loading" :name="icon"></g-icon>
-        <g-icon  name="loading" v-if="loading" class="loading icon"></g-icon>
-        <div class="g-button-content">
+    <button  class="j-button" :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')">
+        <j-icon class="icon" v-if="icon&&!loading" :name="icon"></j-icon>
+        <j-icon  name="loading" v-if="loading" class="loading icon"></j-icon>
+        <div class="j-button-content">
             <slot></slot>
         </div>
     </button>
@@ -23,14 +23,14 @@
                 }
             }
         },
-        components:{'g-icon':Icon}
+        components:{'j-icon':Icon}
     }
 </script>
 
 <style  lang="scss" scoped>
     @import "../../styles/var";
 
-    .g-button {
+    .j-button {
         font-size: $font-size;
         padding: 0 .8em;border-radius: $button-radius;
         border: 1px solid $border-color;background:  $button-bg;
@@ -39,7 +39,7 @@
             &:hover{border-color: $border-color-hover;}
             &:active{background-color: $button-active-bg}
             &:focus{outline: none}
-            > .g-button-content{
+            > .j-button-content{
                 order: 2;}
             > .icon{
                 order: 1;
@@ -47,7 +47,7 @@
                 margin-left: 0;
             }
         &.icon-right{
-            >.g-button-content{order:1}
+            >.j-button-content{order:1}
             >.icon{order:2;
                 margin-left: .3em;
                 margin-right: 0;}
