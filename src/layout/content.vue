@@ -13,6 +13,7 @@ export default {
 <style scoped lang="scss">
     .content{
         flex-grow: 1;
+        width: 100%;
     }
 
 </style>

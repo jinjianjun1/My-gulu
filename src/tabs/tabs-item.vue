@@ -33,7 +33,7 @@
         methods:{
             onClick(){
                 if (this.disabled)return;
-                this.eventBus.$emit('update:selected',this.name,this)
+                this.eventBus.$emit('update:selected',this.name,this);
                 this.$emit('click',this)//为了测试添加的代码
             }
         },

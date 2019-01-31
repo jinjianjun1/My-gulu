@@ -21,6 +21,7 @@ export default {
 <style scoped lang="scss">
 .sidebar{
     position: relative;
+    top: 0;
     >button{position: absolute;top: 0;right: 0;
     }
 }
