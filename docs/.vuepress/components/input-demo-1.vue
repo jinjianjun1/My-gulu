@@ -11,12 +11,6 @@
             <j-input class="item" error="密码不能小于6位数"></j-input>
 
         </div>
-        <h3>接受参数</h3>
-        <ol>
-            <li>disabled</li>
-            <li>readonly:Boolean</li>
-            <li>error:string</li>
-        </ol>
         <p>
             <strong>代码</strong>
         </p>

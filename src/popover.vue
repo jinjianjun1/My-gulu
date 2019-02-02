@@ -15,18 +15,7 @@
         data(){
             return{visible:false}
         },
-        computed:{
-            openEvent(){
-                if(this.trigger==='click'){
-                    return 'click'
-                }else {return 'mouseenter'}
-            },
-            closeEvent(){
-                if(this.trigger==='click'){
-                    return 'click'
-                }else {return 'mouseleave'}
-            }
-        },
+
         mounted(){
             if (this.trigger ==='click'){
                 this.$refs.popover.addEventListener('click',this.onClick)

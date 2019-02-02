@@ -2,8 +2,8 @@ const path = require('path')
 
 module.exports = {
     base:'/My-gulu/',
-    title: 'J-UI',
-    description: '一个正在完善的UI框架',
+    title: 'j-vue-ui',
+    description: '一个正在完善的个人UI框架',
     themeConfig: {
         sidebar: [
             {

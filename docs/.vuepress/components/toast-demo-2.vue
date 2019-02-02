@@ -38,11 +38,6 @@
     data () {
       return {
         content: `
-          <style>
-            .gulu-toast {
-              z-index: 30;
-            }
-          </style>
 
           <div>
             <j-button @click="onClickButton">上方弹出</j-button>

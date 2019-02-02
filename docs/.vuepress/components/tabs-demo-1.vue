@@ -1,14 +1,5 @@
----
-title:Tabs
----
-# Tabs
-
-
-<ClientOnly>
-<tabs-demo-1></tabs-demo-1>
-</ClientOnly>
-
-```
+<template>
+    <div>
         <j-tabs selected="America" >
             <j-tabs-head>
                 <j-tabs-item name="America">美剧</j-tabs-item>
@@ -21,10 +12,21 @@ title:Tabs
                 <j-tabs-pane name="Bangzi">xxx</j-tabs-pane>
             </j-tabs-body>
         </j-tabs>
-```
-# 接受的参数
-|接受参数|参数类型|参数|
-| ------ | ------ | ------ |
-|selected|String||
-|closeButton|Object|{text:'按钮名称',callback(){点击执行的函数}}|
-|name|String||
+    </div>
+</template>
+
+<script>
+    import JTabs from '../../../src/tabs/tabs'
+    import JTabsHead from '../../../src/tabs/tabs-head'
+    import JTabsBody from '../../../src/tabs/tabs-body'
+    import JTabsPane from '../../../src/tabs/tabs-pane'
+    import JTabsItem from '../../../src/tabs/tabs-item'
+    export default {
+        name: "tabs-demo-1",
+        components:{JTabsBody,JTabsHead,JTabs,JTabsItem,JTabsPane},
+    }
+</script>
+
+<style scoped lang="scss">
+
+</style>

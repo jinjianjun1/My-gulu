@@ -15,15 +15,9 @@
     <pre><code>{{content}}</code></pre>
   </div>
 </template>
-<style>
-  .gulu-toast {
-    z-index: 30 !important;
-  }
-</style>
 <style scoped>
-  * {
-    box-sizing: border-box;
-  }
+  * {box-sizing: border-box;padding: 0;margin: 0;}
+
 
 </style>
 <script>
@@ -38,34 +32,23 @@
     data () {
       return {
         content: `
-          <style>
-            .gulu-toast {
-              z-index: 30;
-            }
-          </style>
-
           <div>
             <j-button @click="onClickButton">上方弹出</j-button>
           </div>
 
-          methods: {
-            onClickButton () {
-              this.$toast('你知道我在等你吗？', {
-                closeButton: {
-                  text: '知道了',
-                  callback: () => {
-                    console.log('他说知道了')
-                  }
-                }
-              })
-            }
+    methods: {
+        onClickButton () {
+        this.$toast('<strong style="color:red;">紅色警告</strong>', {
+          enableHtml: true
+        })
+      }
           },
       `.replace(/^ {8}/gm, '').trim()
       }
     },
     methods: {
       onClickButton () {
-        this.$toast('<strong style="color:red;">加粗的提示</strong>', {
+        this.$toast('<strong style="color:red;">紅色警告</strong>', {
           enableHtml: true
         })
       }
