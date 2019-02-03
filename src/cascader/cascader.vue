@@ -60,6 +60,7 @@
                }
             },
             onUpdateSelected(newSelected){
+
                 this.$emit('update:selected',newSelected);
                 let lastItem = newSelected[newSelected.length - 1];
                 let simple = (children, id) => {
@@ -113,6 +114,9 @@
             result(){
                 return this.selected.map(item=>item.name).join('/')
             }
+        },
+        mounted() {
+            console.log(this.selected);
         }
     }
 </script>

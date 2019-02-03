@@ -5,10 +5,10 @@
                 <span class="name"> {{item.name}}</span>
                 <span class="icons">
                     <template v-if="item.name===loadingItem.name">
-                    <g-icon class="loading" name="loading"> </g-icon>
+                    <j-icon class="loading" name="loading"> </j-icon>
                     </template>
                     <template v-else>
-                    <g-icon class="next" v-if="rightIconVisible(item)"  name="right"></g-icon>
+                    <j-icon class="next" v-if="rightIconVisible(item)"  name="right"></j-icon>
                     </template>
                 </span>
             </div>
@@ -29,7 +29,7 @@
     export default {
         name: "cascaderItem",
         components:{
-            'g-icon':Icon
+            'j-icon':Icon
         },
 
         computed:{
