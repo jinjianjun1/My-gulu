@@ -1,31 +1,31 @@
 <template>
-    <div class="g-slides" @mouseenter="onMouseEnter"
+    <div class="j-slides" @mouseenter="onMouseEnter"
          @mouseleave="onMouseLeave"
          @touchstart="onTouchStart"
          @touchmove="onTouchMove"
          @touchend="onTouchEnd"
     >
-            <div class="g-slides-window">
-                <div class="g-slides-wrapper">
+            <div class="j-slides-window">
+                <div class="j-slides-wrapper">
                     <slot></slot>
                 </div>
             </div>
-            <div class="g-slides-dots">
+            <div class="j-slides-dots">
                 <span @click="select(selectedIndex-1)">
-                    <g-icon name="left"></g-icon>
+                    <j-icon name="left"></j-icon>
                 </span>
                 <span v-for="n in childrenLength" :class="{active:selectedIndex===n-1} "
                 @click="select(n-1)" :key="n" :data-index="n-1">
                     {{n}}
                 </span>
                 <span @click="select(selectedIndex+1)">
-                    <g-icon name="right"></g-icon></span>
+                    <j-icon name="right"></j-icon></span>
             </div>
         </div>
 </template>
 
 <script>
-    import GIcon from '../icon'
+    import JIcon from '../icon'
     export default {
         name: "slides",
         props:{
@@ -122,12 +122,17 @@
             },
             select(newIndex) {
                 this.lastSelectedIndex=this.selectedIndex ;
+                // console.log(newIndex)
+                // if(newIndex===0){
+                //     newIndex=0
+                // }
                 if (newIndex === -1) {
                     newIndex = (this.names.length - 1)
                 }
                 if (newIndex === this.names.length) {
                     newIndex = 0
                 }
+                
                 this.$emit('update:selected', this.names[newIndex])
             },
             getSelected(){
@@ -141,9 +146,10 @@
                     if (this.timerId) {
                         if (this.lastSelectedIndex === this.items.length - 1 && this.selectedIndex === 0) {
                             reverse = false
-                        }
-                        if (this.lastSelectedIndex === 0 && this.selectedIndex === this.items.length - 1) {
+                        }else if (this.lastSelectedIndex === 0 && this.selectedIndex === this.items.length - 1) {
                             reverse = true
+                        }else if(this.lastSelectedIndex-this.selectedIndex===1){
+                            reverse= true
                         }
                     } else {
                         if (this.lastSelectedIndex === this.items.length - 1 && this.selectedIndex === 0) {
@@ -151,6 +157,9 @@
                         }
                         if (this.lastSelectedIndex === 0 && this.selectedIndex === this.items.length - 1) {
                             reverse = true
+                        }
+                        if(this.lastSelectedIndex-this.selectedIndex===1){
+                            reverse= true
                         }
                     }
                     vm.reverse=reverse;
@@ -161,14 +170,14 @@
             }
         },
         components:{
-            GIcon
+            JIcon
         }
     }
 </script>
 
 <style scoped lang="scss">
 
-    .g-slides {
+    .j-slides {
         &-window {
             overflow: hidden;
         }

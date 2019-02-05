@@ -1,6 +1,6 @@
 <template>
     <transition name="slide">
-    <div class="g-slides-item" v-if="visible" :class="{reverse}">
+    <div class="j-slides-item" v-if="visible" :class="{reverse}">
         <slot></slot>
     </div>
     </transition>
@@ -37,9 +37,9 @@
 </script>
 
 <style scoped lang="scss">
-.g-slides-item{
+// .j-slides-item{
 
-}
+// }
 .slide-leave-active{
     position: absolute;
     left: 0;

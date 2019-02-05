@@ -19,7 +19,8 @@ module.exports = {
                 children:['/components/button',
                     '/components/input',
                     '/components/layout','/components/grid','/components/tabs',
-                    '/components/toast','/components/popover','/components/collapse','/components/cascader']
+                    '/components/toast','/components/popover','/components/collapse',
+                    '/components/cascader','/components/slides']
             }
 
         ]
