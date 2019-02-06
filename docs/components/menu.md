@@ -30,3 +30,10 @@ title:Menu
 
     </div>
 ```
+
+# 接受的参数
+|接受参数|参数类型|说明|
+| ------ | ------ | ------ |
+|selected|String|加语法糖.sync可以监听selected的变化，selected的值可以是undefined或item接受的名字|
+|vertical|Boolean|true为竖排|
+|name|String|item 和subItem 必须要传的参数|
