@@ -1,5 +1,5 @@
 <template>
-    <div class="g-menu" :class="{vertical}">
+    <div class="j-menu" :class="{vertical}">
         <slot></slot>
     </div>
 </template>
@@ -46,7 +46,7 @@
 
 <style scoped lang="scss">
 @import "var";
-.g-menu{
+.j-menu{
     display: flex;
     border-bottom: 1px solid $gray;
     cursor: default;

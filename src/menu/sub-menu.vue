@@ -1,21 +1,21 @@
 <template>
-    <div class="g-sub-menu" :class="{active,vertical}"  v-click-out-side="close">
-        <span class="g-sub-menu-label" @click="onClick">
+    <div class="j-sub-menu" :class="{active,vertical}"  v-click-out-side="close">
+        <span class="j-sub-menu-label" @click="onClick">
             <slot name="title"></slot>
-            <span class="g-sub-menu-icon" :class="{open,vertical}">
-                <g-icon  name="right "></g-icon>
+            <span class="j-sub-menu-icon" :class="{open,vertical}">
+                <j-icon  name="right "></j-icon>
             </span>
         </span>
         <template v-if="vertical">
             <transition name="x" @enter="enter" @after-enter="afterEnter"
                         @leave="leave" @after-leave="afterLeave">
-                <div class="g-sub-menu-popover" :class="{vertical}" v-show="open">
+                <div class="j-sub-menu-popover" :class="{vertical}" v-show="open">
                     <slot></slot>
                 </div>
             </transition>
         </template>
         <template v-else>
-            <div class="g-sub-menu-popover"  v-show="open">
+            <div class="j-sub-menu-popover"  v-show="open">
                 <slot></slot>
             </div>
         </template>
@@ -25,13 +25,13 @@
 
 <script>
     import ClickOutSide from '../click-outside'
-    import GIcon from '../icon'
+    import JIcon from '../icon'
     export default {
         name: "GuluSubMenu",
         data(){
             return {open:false,}
         },
-        components:{GIcon},
+        components:{JIcon},
         directives:{
             ClickOutSide
         },
@@ -91,7 +91,7 @@
 
 <style scoped lang="scss">
     @import "var";
-    .g-sub-menu{
+    .j-sub-menu{
         position: relative;
         &:not(.vertical){
             &.active{
@@ -137,23 +137,23 @@
             }
         }
     }
-    .g-sub-menu .g-sub-menu {
+    .j-sub-menu .j-sub-menu {
         &.active{
             &::after{
                 display: none;
             }
         }
-        .g-sub-menu-popover{
+        .j-sub-menu-popover{
             top: 0;
             left: 100%;
             margin-left: 8px;
         }
-        .g-sub-menu-label{
+        .j-sub-menu-label{
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .g-sub-menu-icon{
+        .j-sub-menu-icon{
             display: inline-flex;transform: scale(.8);fill: $light-color;
             margin-left: 1em;transition: transform 250ms;
             &.vertical{

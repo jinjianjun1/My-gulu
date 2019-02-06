@@ -1,5 +1,5 @@
 <template>
-    <div class="g-menu-item" :selected="selected" :class="{selected,vertical}" @click="onClick"
+    <div class="j-menu-item" :selected="selected" :class="{selected,vertical}" @click="onClick"
     :data-name="name">
         <div>
         <slot></slot>
@@ -30,7 +30,7 @@
 
 <style scoped lang="scss">
     @import "var";
-    .g-menu-item{
+    .j-menu-item{
         padding:8px 16px;
         position: relative;
         &:not(.vertical){
@@ -47,7 +47,7 @@
     a{
         color:inherit;text-decoration:none;
     }
-    .g-sub-menu .g-menu-item:not(.vertical){
+    .j-sub-menu .j-menu-item:not(.vertical){
         &.selected{
             color: $color;
             background: $gray;
