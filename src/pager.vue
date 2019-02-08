@@ -1,7 +1,7 @@
 <template>
     <div class="gulu-pager" :class="{hide:hideIfOnePage===true && totalPage<=1}" >
         <span class="gulu-pager-nav prev" :class="{disabled:currentPage===1}" @click="onClickPage(currentPage-1)">
-            <g-icon name="left"> </g-icon>
+            <j-icon name="left"> </j-icon>
         </span>
         <template  v-for="page in pages" >
             <template v-if="page===currentPage">
@@ -10,7 +10,7 @@
                 </span>
             </template>
             <template v-else-if="page==='...'">
-                <g-icon name="more" class="gulu-pager-separator "></g-icon>
+                <j-icon name="more" class="gulu-pager-separator "></j-icon>
             </template>
             <template v-else>
                 <span class="gulu-pager-item other" @click="onClickPage(page)">
@@ -20,13 +20,13 @@
         </template  >
         <span class="gulu-pager-nav next" :class="{disabled:currentPage===totalPage}"
               @click="onClickPage(currentPage+1)">
-            <g-icon name="right"> </g-icon>
+            <j-icon name="right"> </j-icon>
         </span>
     </div>
 </template>
 
 <script>
-    import GIcon from './icon'
+    import JIcon from './icon'
 
     export default {
         name: "GuluPager",
@@ -72,7 +72,7 @@
                 }
             }
         },
-        components:{GIcon}
+        components:{JIcon}
     }
 </script>
 

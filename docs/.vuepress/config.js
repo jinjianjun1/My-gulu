@@ -20,7 +20,7 @@ module.exports = {
                     '/components/input',
                     '/components/layout','/components/grid','/components/tabs',
                     '/components/toast','/components/popover','/components/collapse',
-                    '/components/cascader','/components/slides','/components/menu']
+                    '/components/cascader','/components/slides','/components/menu','/components/pager']
             }
 
         ]
