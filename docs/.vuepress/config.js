@@ -21,7 +21,7 @@ module.exports = {
                     '/components/layout','/components/grid','/components/tabs',
                     '/components/toast','/components/popover','/components/collapse',
                     '/components/cascader','/components/slides','/components/menu',
-                    '/components/pager']
+                    '/components/pager','/components/sticky']
             }
 
         ]

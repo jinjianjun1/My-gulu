@@ -47,7 +47,7 @@
      <p>22222</p>
      <p>22222</p>
      <p>22222</p>
- <j-sticky :distance="100" >
+ <j-sticky >
      <div class="box" >123231</div>
  </j-sticky>
      <p>22222</p>

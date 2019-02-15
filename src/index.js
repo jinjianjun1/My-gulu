@@ -1,4 +1,4 @@
-export {default as JIcon} from './icon'
+export {default as JIcon} from "./icon";
 export {default as JInput} from './input'
 export {default as JButtonGroup} from './button/button-group'
 export {default as JButton} from './button/button'

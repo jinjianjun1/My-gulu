@@ -1,9 +1,9 @@
 <template>
     <div style="margin-top: 50px;">
-        <g-button>默认样式</g-button> <g-button icon="settings">设置</g-button>
-        <g-button disabled>disabled</g-button>
-        <g-button icon="delate" iconPosition="right">删除</g-button>
-        <g-button loading>loading</g-button>
+        <j-button>默认样式</j-button> <j-button icon="settings">设置</j-button>
+        <j-button disabled>disabled</j-button>
+        <j-button icon="delate" iconPosition="right">删除</j-button>
+        <j-button loading>loading</j-button>
         <hr>
         <h3>使用方法</h3>
         <pre><code>{{content}}</code></pre>
@@ -15,14 +15,14 @@
     export default {
         name: "button-demo",
         components:{
-            'g-button':Button
+            'j-button':Button
         },
         data(){
             return{
-                content:`<g-button>默认样式</g-button> <g-button icon="settings">设置</g-button>
-        <g-button disabled>disabled</g-button>
-        <g-button icon="delate" iconPosition="right">delate</g-button>
-        <g-button loading>loading</g-button>`.replace(/\t+| +/g,'').trim()
+                content:`<j-button>默认样式</j-button> <j-button icon="settings">设置</j-button>
+        <j-button disabled>disabled</j-button>
+        <j-button icon="delate" iconPosition="right">delate</j-button>
+        <j-button loading>loading</j-button>`.replace(/\t+| +/g,'').trim()
             }
         }
     }
