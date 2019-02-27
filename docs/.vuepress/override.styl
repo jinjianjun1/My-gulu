@@ -1,0 +1,75 @@
+.nav-links a{font-size:1rem;font-weight:bold;line-height:2rem;padding:0 2rem;}
+
+.home .hero h1{font-weight:normal;}
+
+.nav-item > a:not(.external):hover, .nav-item > a:not(.external).router-link-active{border-color:lightblue;}
+.home .hero .action-button,.home .hero .action-button:hover{background-color:lightblue;}
+.home .hero .description{color:lightblue;font-size:1.8rem;}
+
+a,.page-nav .next,
+.dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active{color: lightblue;}
+.dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active::after{border-left: 5px solid lightblue;}
+a.sidebar-link.active,a.sidebar-link:hover{color: lightblue;border-left-color: lightblue;}
+.custom-block.tip{border-color: lightblue;}
+//$accentColor =  lightblue  // 主题色
+//$textColor = #2c3e50    // 文字颜色
+//$borderColor = #eaecef  // 边框颜色
+//$codeBgColor = #282c34  // 代码背景颜色
+.hero{ display: relative;}
+.hero>h1{ opacity :0;}
+.description{ display: none;}
+.action> .nav-link.action-button{
+  border-radius: 30px;
+  color:red;
+  background: #fff;
+  font-size:28px;
+  padding:2px 18px;
+  position: fixed;
+  right:20vh ;font-family :"PingFang";
+  font-weight :bold;
+}
+.action> .nav-link.action-button:hover{
+  background: #ddd;
+}
+  @media (max-width: 768px){
+    .action> .nav-link.action-button {
+      right: 0;
+      bottom:35vh;
+
+    }
+  }
+@media (min-width: 769px){
+  .action> .nav-link.action-button {
+    bottom:40vh
+    right:5vh;
+
+  }
+}
+@media (max-width: 1199px){
+  .action> .nav-link.action-button {
+    bottom:80vh
+    right:10vh;
+  }
+}
+@media (min-width: 1200px){
+  .action> .nav-link.action-button {
+    bottom:40vh
+    right:12vh;
+  }
+}
+@media (max-width: 1600px){
+  .action> .nav-link.action-button {
+    bottom:40vh
+    right: 20vh;
+  }
+}
+@media (min-width: 1600px){
+  .action> .nav-link.action-button {
+    bottom:40vh
+    right: 50vh;
+
+  }
+}
+.theme-container.custom-page-class {
+  /* 特定页面的 CSS */
+}
