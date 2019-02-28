@@ -2,16 +2,16 @@
 
 .home .hero h1{font-weight:normal;}
 
-.nav-item > a:not(.external):hover, .nav-item > a:not(.external).router-link-active{border-color:lightblue;}
-.home .hero .action-button,.home .hero .action-button:hover{background-color:lightblue;}
-.home .hero .description{color:lightblue;font-size:1.8rem;}
+.nav-item > a:not(.external):hover, .nav-item > a:not(.external).router-link-active{border-color:#ffbd24;}
+.home .hero .action-button,.home .hero .action-button:hover{background-color:#ffbd24;}
+.home .hero .description{color:#ffbd24;font-size:1.8rem;}
 
 a,.page-nav .next,
-.dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active{color: lightblue;}
-.dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active::after{border-left: 5px solid lightblue;}
-a.sidebar-link.active,a.sidebar-link:hover{color: lightblue;border-left-color: lightblue;}
-.custom-block.tip{border-color: lightblue;}
-//$accentColor =  lightblue  // 主题色
+.dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active{color: #ffbd24;}
+.dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active::after{border-left: 5px solid #ffbd24;}
+a.sidebar-link.active,a.sidebar-link:hover{color: #ffbd24;border-left-color: #ffbd24;}
+.custom-block.tip{border-color: #ffbd24;}
+//$accentColor =  #ffbd24  // 主题色
 //$textColor = #2c3e50    // 文字颜色
 //$borderColor = #eaecef  // 边框颜色
 //$codeBgColor = #282c34  // 代码背景颜色
@@ -20,8 +20,8 @@ a.sidebar-link.active,a.sidebar-link:hover{color: lightblue;border-left-color: l
 .description{ display: none;}
 .action> .nav-link.action-button{
   border-radius: 30px;
-  color:red;
-  background: #fff;
+  color:#004859;
+  background: #ffbd24;
   font-size:28px;
   padding:2px 18px;
   position: fixed;
@@ -31,13 +31,7 @@ a.sidebar-link.active,a.sidebar-link:hover{color: lightblue;border-left-color: l
 .action> .nav-link.action-button:hover{
   background: #ddd;
 }
-  @media (max-width: 768px){
-    .action> .nav-link.action-button {
-      right: 0;
-      bottom:35vh;
 
-    }
-  }
 @media (min-width: 769px){
   .action> .nav-link.action-button {
     bottom:40vh
@@ -66,10 +60,14 @@ a.sidebar-link.active,a.sidebar-link:hover{color: lightblue;border-left-color: l
 @media (min-width: 1600px){
   .action> .nav-link.action-button {
     bottom:40vh
-    right: 50vh;
+    right: 34vh;
 
   }
 }
-.theme-container.custom-page-class {
-  /* 特定页面的 CSS */
+@media (max-width: 768px){
+  .action> .nav-link.action-button {
+    right: 6vh;
+    bottom:22vh;
+
+  }
 }

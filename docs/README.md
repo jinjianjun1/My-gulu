@@ -1,6 +1,6 @@
 ---
 home: true
-actionText: 开始
+actionText: Start
 pageClass: custom-page-class
 navbar: false
 actionLink: /get-start/
