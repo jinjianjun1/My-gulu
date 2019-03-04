@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[32],{343:function(n,t,e){"use strict";e.r(t);var s=e(1),i=Object(s.a)({},function(){var n=this.$createElement,t=this._self._c||n;return t("div",{staticClass:"content"},[t("index-demo")],1)},[],!1,null,null,null);i.options.__file="README.md";t.default=i.exports}}]);
